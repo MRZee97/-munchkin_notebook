@@ -6,9 +6,26 @@ import 'router.gr.dart';
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
-      AutoRoute(page: MainRoute.page,
-      ),
-      AutoRoute(page: SecondRoute.page,
-      ),
-    ];
+        AutoRoute(
+          page: MainRoute.page,
+        ),
+        AutoRoute(
+          page: SecondRoute.page,
+        ),
+        AutoRoute(
+          page: CreateGameRoute.page,
+        ),
+        AutoRoute(
+          page: MaxLevelRoute.page,
+        ),
+        AutoRoute(
+          page: SelfCoutingRoute.page,
+        ),
+        AutoRoute(
+          page: JoinGameRoute.page,
+        ),
+        AutoRoute(
+          page: EnterCodeRoute.page,
+        ),
+      ];
 }

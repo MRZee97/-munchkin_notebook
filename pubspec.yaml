@@ -18,6 +18,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   auto_route: ^6.2.0
+  pin_code_fields: ^7.4.0
 
 
 dev_dependencies:
@@ -32,8 +33,11 @@ flutter:
   generate: true
   uses-material-design: true
   fonts:
-    - family: Gilroy
+    - family: munchkin
       fonts:
-        - asset: assets/fonts/Gilroy-Regular.ttf
+        - asset: assets/fonts/munchkin.ttf
+    - family: academy
+      fonts:
+        - asset: assets/fonts/academy.ttf
   assets:
     - assets/images/
