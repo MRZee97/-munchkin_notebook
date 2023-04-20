@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:munchkin/core/ui/constants/app_colors.dart';
-import 'package:munchkin/core/ui/widgets/base_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
+import 'package:munchkin/features/base_page/presentation/page/base_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()

@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Munchkin Notebook',
       theme: AppTheme.theme,
       routerConfig: _appRouter.config(),
       localizationsDelegates: const [

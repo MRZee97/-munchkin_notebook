@@ -7,12 +7,6 @@ class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
-          page: MainRoute.page,
-        ),
-        AutoRoute(
-          page: SecondRoute.page,
-        ),
-        AutoRoute(
           page: CreateGameRoute.page,
         ),
         AutoRoute(
