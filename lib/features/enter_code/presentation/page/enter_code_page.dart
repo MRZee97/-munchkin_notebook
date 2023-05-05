@@ -1,22 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:munchkin/core/ui/constants/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
-import 'package:munchkin/features/base_page/presentation/page/base_page.dart';
+import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 @RoutePage()
-class EnterCodePage extends StatefulWidget {
+class EnterCodePage extends StatelessWidget {
   const EnterCodePage({super.key});
 
-  @override
-  State<EnterCodePage> createState() => _EnterCodePageState();
-}
-
-class _EnterCodePageState extends State<EnterCodePage> {
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -24,53 +20,15 @@ class _EnterCodePageState extends State<EnterCodePage> {
         body: Column(children: [
           const SizedBox(height: 20),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 300,
-                child: PinCodeTextField(
-                  appContext: context,
-                  length: 5,
-                  keyboardType: TextInputType.number,
-                  textStyle: const TextStyle(
-                    color: Colors.black,
-                    fontFamily: "academy",
-                    fontWeight: FontWeight.w700,
-                    fontSize: 48,
-                  ),
-                  obscureText: false,
-                  animationType: AnimationType.fade,
-                  pinTheme: PinTheme(
-                    borderWidth: 3,
-                    shape: PinCodeFieldShape.underline,
-                    borderRadius: BorderRadius.circular(5),
-                    fieldOuterPadding:
-                        const EdgeInsets.symmetric(horizontal: 3),
-                    fieldHeight: 50,
-                    fieldWidth: 40,
-                    activeFillColor: Colors.transparent,
-                    activeColor: Colors.black,
-                    selectedColor: Colors.black,
-                    inactiveColor: Colors.black,
-                  ),
-                  animationDuration: const Duration(milliseconds: 300),
-                  onCompleted: (v) {
-                    print("Completed");
-                  },
-                  onChanged: (value) {
-                    print(value);
-                    setState(() {
-                      // currentText = value;
-                    });
-                  },
-                  beforeTextPaste: (text) {
-                    print("Allowing to paste $text");
-                    return true;
-                  },
-                ),
-              ),
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const [
+              Otp(),
+              Otp(),
+              Otp(),
+              Otp(),
             ],
           ),
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
@@ -98,5 +56,45 @@ class _EnterCodePageState extends State<EnterCodePage> {
             const SizedBox(height: 20),
           ],
         ));
+  }
+}
+
+class Otp extends StatelessWidget {
+  const Otp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 50,
+      height: 50,
+      child: TextFormField(
+        decoration: InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              width: 4,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        keyboardType: TextInputType.number,
+        style:
+            TextStyle(color: Colors.black, fontSize: 48, fontFamily: "academy"),
+        textAlign: TextAlign.center,
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(1),
+          FilteringTextInputFormatter.digitsOnly
+        ],
+        onChanged: (value) {
+          if (value.length == 1) {
+            FocusScope.of(context).nextFocus();
+          }
+          if (value.isEmpty) {
+            FocusScope.of(context).previousFocus();
+          }
+        },
+      ),
+    );
   }
 }
