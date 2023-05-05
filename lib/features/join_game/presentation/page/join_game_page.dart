@@ -4,7 +4,7 @@ import 'package:munchkin/core/ui/constants/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
-import 'package:munchkin/features/base_page/presentation/page/base_page.dart';
+import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
