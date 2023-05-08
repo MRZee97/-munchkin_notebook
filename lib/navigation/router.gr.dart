@@ -35,9 +35,11 @@ abstract class $AppRouter extends _i10.RootStackRouter {
   @override
   final Map<String, _i10.PageFactory> pagesMap = {
     ChoseGenderRoute.name: (routeData) {
+      final args = routeData.argsAs<ChoseGenderRouteArgs>(
+          orElse: () => const ChoseGenderRouteArgs());
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.ChoseGenderPage(),
+        child: _i1.ChoseGenderPage(key: args.key),
       );
     },
     CreateGameRoute.name: (routeData) {
@@ -47,9 +49,11 @@ abstract class $AppRouter extends _i10.RootStackRouter {
       );
     },
     EnterCodeRoute.name: (routeData) {
+      final args = routeData.argsAs<EnterCodeRouteArgs>(
+          orElse: () => const EnterCodeRouteArgs());
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.EnterCodePage(),
+        child: _i3.EnterCodePage(key: args.key),
       );
     },
     EnterNameRoute.name: (routeData) {
@@ -97,16 +101,31 @@ abstract class $AppRouter extends _i10.RootStackRouter {
 
 /// generated route for
 /// [_i1.ChoseGenderPage]
-class ChoseGenderRoute extends _i10.PageRouteInfo<void> {
-  const ChoseGenderRoute({List<_i10.PageRouteInfo>? children})
-      : super(
+class ChoseGenderRoute extends _i10.PageRouteInfo<ChoseGenderRouteArgs> {
+  ChoseGenderRoute({
+    _i11.Key? key,
+    List<_i10.PageRouteInfo>? children,
+  }) : super(
           ChoseGenderRoute.name,
+          args: ChoseGenderRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'ChoseGenderRoute';
 
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+  static const _i10.PageInfo<ChoseGenderRouteArgs> page =
+      _i10.PageInfo<ChoseGenderRouteArgs>(name);
+}
+
+class ChoseGenderRouteArgs {
+  const ChoseGenderRouteArgs({this.key});
+
+  final _i11.Key? key;
+
+  @override
+  String toString() {
+    return 'ChoseGenderRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -125,16 +144,31 @@ class CreateGameRoute extends _i10.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.EnterCodePage]
-class EnterCodeRoute extends _i10.PageRouteInfo<void> {
-  const EnterCodeRoute({List<_i10.PageRouteInfo>? children})
-      : super(
+class EnterCodeRoute extends _i10.PageRouteInfo<EnterCodeRouteArgs> {
+  EnterCodeRoute({
+    _i11.Key? key,
+    List<_i10.PageRouteInfo>? children,
+  }) : super(
           EnterCodeRoute.name,
+          args: EnterCodeRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'EnterCodeRoute';
 
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+  static const _i10.PageInfo<EnterCodeRouteArgs> page =
+      _i10.PageInfo<EnterCodeRouteArgs>(name);
+}
+
+class EnterCodeRouteArgs {
+  const EnterCodeRouteArgs({this.key});
+
+  final _i11.Key? key;
+
+  @override
+  String toString() {
+    return 'EnterCodeRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

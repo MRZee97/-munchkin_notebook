@@ -8,7 +8,6 @@ class LvlSelectionGroup extends StatefulWidget {
   });
 
   final MaxLevelController controller;
-  // final Function(int) onLevelChanged;
 
   @override
   State<LvlSelectionGroup> createState() => _LvlSelectionGroupState();

@@ -9,10 +9,13 @@ import 'package:munchkin/navigation/router.gr.dart';
 
 import 'gender_selection.dart';
 
+enum Gender { Man, Woman }
+
 @RoutePage()
 class ChoseGenderPage extends StatelessWidget {
-  const ChoseGenderPage({super.key});
+  ChoseGenderPage({super.key});
 
+  Gender _gender = Gender.Man;
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -25,7 +28,9 @@ class ChoseGenderPage extends StatelessWidget {
             height: 160,
           ),
           const SizedBox(height: 20),
-          GenderSelection(),
+          GenderSelection(
+            gender: _gender,
+          ),
         ]),
         actions: Column(
           mainAxisAlignment: MainAxisAlignment.end,

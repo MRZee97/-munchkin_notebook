@@ -1,17 +1,31 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:munchkin/core/ui/widgets/image_widget.dart';
+import 'package:munchkin/features/chose_gender/presentation/page/chose_gender_page.dart';
 
 class GenderSelection extends StatefulWidget {
-  const GenderSelection({
+  GenderSelection({
     super.key,
+    required this.gender,
   });
+
+  Gender gender;
+  static const double height = 60;
+  static const double width = 60;
+  static const double opacitySelected = 1;
+  static const double opacityUnselected = 0.6;
 
   @override
   State<GenderSelection> createState() => _GenderSelectionState();
 }
 
 class _GenderSelectionState extends State<GenderSelection> {
-  bool _sex = false;
+  late Gender _gender;
+  @override
+  void initState() {
+    super.initState();
+    _gender = widget.gender;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +35,19 @@ class _GenderSelectionState extends State<GenderSelection> {
         InkWell(
           onTap: () {
             setState(() {
-              _sex = false;
+              _gender = Gender.Man;
             });
           },
           child: Opacity(
-            opacity: _sex ? 1.0 : 0.5,
+            opacity: _gender == Gender.Man
+                ? GenderSelection.opacitySelected
+                : GenderSelection.opacityUnselected,
             child: SizedBox(
-              height: 60,
-              width: 60,
-              child: Image.asset("assets/images/man.png"),
-            ),
+                height: GenderSelection.height,
+                width: GenderSelection.width,
+                child: ImageWidget(
+                  image: AppLocalizations.of(context)!.manImage,
+                )),
           ),
         ),
         const Padding(
@@ -40,15 +57,19 @@ class _GenderSelectionState extends State<GenderSelection> {
         InkWell(
           onTap: () {
             setState(() {
-              _sex = true;
+              _gender = Gender.Woman;
             });
           },
           child: Opacity(
-            opacity: _sex ? 0.5 : 1.0,
+            opacity: _gender == Gender.Woman
+                ? GenderSelection.opacitySelected
+                : GenderSelection.opacityUnselected,
             child: SizedBox(
-              height: 60,
-              width: 60,
-              child: Image.asset("assets/images/woman.png"),
+              height: GenderSelection.height,
+              width: GenderSelection.width,
+              child: ImageWidget(
+                image: AppLocalizations.of(context)!.womanImage,
+              ),
             ),
           ),
         ),

@@ -23,25 +23,29 @@ class EnterNamePage extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 40,
             ),
             child: TextField(
               textAlign: TextAlign.center,
               onSubmitted: (value) {
-                AutoRouter.of(context).push(const ChoseGenderRoute());
+                AutoRouter.of(context).push(
+                  ChoseGenderRoute(),
+                );
               },
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.w700,
                   color: AppColors.titleColor,
                   fontFamily: "academy"),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
                 enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey, width: 1.0)),
+                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                ),
                 focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 4.0)),
+                  borderSide: BorderSide(color: Colors.black, width: 4.0),
+                ),
               ),
             ),
           ),
@@ -52,13 +56,17 @@ class EnterNamePage extends StatelessWidget {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
-                  AutoRouter.of(context).push(const ChoseGenderRoute());
+                  AutoRouter.of(context).push(
+                    ChoseGenderRoute(),
+                  );
                 }),
             const SizedBox(height: 20),
             SecondaryButton(
                 text: AppLocalizations.of(context)!.returnStartScreenButton,
                 onPressed: () {
-                  AutoRouter.of(context).replaceAll([const CreateGameRoute()]);
+                  AutoRouter.of(context).replaceAll(
+                    [const CreateGameRoute()],
+                  );
                 }),
             const SizedBox(height: 38),
           ],

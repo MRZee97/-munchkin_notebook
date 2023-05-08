@@ -41,7 +41,7 @@ class JoinGamePage extends StatelessWidget {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.joinGameButton,
                 onPressed: () {
-                  AutoRouter.of(context).push(const EnterCodeRoute());
+                  AutoRouter.of(context).push(EnterCodeRoute());
                 }),
             const SizedBox(height: 20),
             SecondaryButton(

@@ -6,25 +6,21 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
+import 'package:munchkin/features/base_page/presentation/page/chose_color/presentation/widgets/color_selection.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
 class ChoseColorPage extends StatefulWidget {
   ChoseColorPage({super.key});
-
+  static const itemCount = 35;
   @override
   State<ChoseColorPage> createState() => _ChoseColorPageState();
 }
 
-bool isSelected = false;
-
 class _ChoseColorPageState extends State<ChoseColorPage> {
-  List colors = [];
-  int selectedIndex = 0;
-
   List generateColors() {
-    List colors = [];
-    for (int k = 0; k <= 35; k++) {
+    final List colors = [];
+    for (int k = 0; k <= ChoseColorPage.itemCount; k++) {
       colors.add(Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
           .withOpacity(1.0));
     }
@@ -37,6 +33,8 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
     colors = generateColors();
   }
 
+  List colors = [];
+
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -47,36 +45,8 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Expanded(
-                child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 5,
-                      mainAxisExtent: 40,
-                      mainAxisSpacing: 10,
-                    ),
-                    itemCount: 35,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = index;
-                          });
-                        },
-                        child: Container(
-                          child: selectedIndex == index
-                              ? Icon(
-                                  Icons.check,
-                                  color: Colors.black,
-                                )
-                              : null,
-                          width: 30.0,
-                          decoration: BoxDecoration(
-                            color: colors[index],
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                      );
-                    }),
+                child: ColorSelection(
+                    itemCount: ChoseColorPage.itemCount, colors: colors),
               ),
             ],
           ),
@@ -93,7 +63,7 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
             SecondaryButton(
                 text: AppLocalizations.of(context)!.returnSexButton,
                 onPressed: () {
-                  AutoRouter.of(context).pop(const ChoseGenderRoute());
+                  AutoRouter.of(context).pop(ChoseGenderRoute());
                 }),
             const SizedBox(height: 38),
           ],

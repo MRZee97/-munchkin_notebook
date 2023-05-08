@@ -28,18 +28,13 @@ class MaxLevelPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: InkWell(
-                onTap: () {
-                  _maxLevelController.setLevel(12);
-                },
-                child: Text(
-                  AppLocalizations.of(context)!.textMaxLevel,
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.titleColor,
-                      fontFamily: "academy"),
-                ),
+              child: Text(
+                AppLocalizations.of(context)!.textMaxLevel,
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.titleColor,
+                    fontFamily: "academy"),
               ),
             ),
           ]),

@@ -11,8 +11,13 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 @RoutePage()
 class EnterCodePage extends StatelessWidget {
-  const EnterCodePage({super.key});
+  EnterCodePage({super.key});
 
+  TextEditingController _textEditingControllerFirst = TextEditingController();
+  TextEditingController _textEditingControllerSecond = TextEditingController();
+  TextEditingController _textEditingControllerThird = TextEditingController();
+  TextEditingController _textEditingControllerFourth = TextEditingController();
+  String _pincode = "";
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -21,11 +26,11 @@ class EnterCodePage extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              Otp(),
-              Otp(),
-              Otp(),
-              Otp(),
+            children: [
+              Otp(controller: _textEditingControllerFirst),
+              Otp(controller: _textEditingControllerSecond),
+              Otp(controller: _textEditingControllerThird),
+              Otp(controller: _textEditingControllerFourth),
             ],
           ),
           const SizedBox(height: 20),
@@ -46,7 +51,13 @@ class EnterCodePage extends StatelessWidget {
           children: [
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
-                onPressed: () {}),
+                onPressed: () {
+                  _pincode = _textEditingControllerFirst.text +
+                      _textEditingControllerSecond.text +
+                      _textEditingControllerThird.text +
+                      _textEditingControllerFourth.text;
+                  print(_pincode);
+                }),
             const SizedBox(height: 20),
             SecondaryButton(
                 text: AppLocalizations.of(context)!.returnStartScreenButton,
@@ -60,9 +71,12 @@ class EnterCodePage extends StatelessWidget {
 }
 
 class Otp extends StatelessWidget {
-  const Otp({
+  Otp({
     Key? key,
+    required this.controller,
   }) : super(key: key);
+
+  TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +84,8 @@ class Otp extends StatelessWidget {
       width: 50,
       height: 50,
       child: TextFormField(
-        decoration: InputDecoration(
+        controller: controller,
+        decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
               width: 4,
@@ -79,8 +94,8 @@ class Otp extends StatelessWidget {
           ),
         ),
         keyboardType: TextInputType.number,
-        style:
-            TextStyle(color: Colors.black, fontSize: 48, fontFamily: "academy"),
+        style: const TextStyle(
+            color: Colors.black, fontSize: 48, fontFamily: "academy"),
         textAlign: TextAlign.center,
         inputFormatters: [
           LengthLimitingTextInputFormatter(1),
