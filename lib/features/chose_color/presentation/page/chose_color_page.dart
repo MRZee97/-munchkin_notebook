@@ -6,7 +6,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
-import 'package:munchkin/features/base_page/presentation/page/chose_color/presentation/widgets/color_selection.dart';
+
+import 'package:munchkin/features/chose_color/presentation/widgets/color_selection.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
@@ -18,6 +19,7 @@ class ChoseColorPage extends StatefulWidget {
 }
 
 class _ChoseColorPageState extends State<ChoseColorPage> {
+  final ColorController _controller = ColorController(initialvalue: 0);
   List generateColors() {
     final List colors = [];
     for (int k = 0; k <= ChoseColorPage.itemCount; k++) {
@@ -46,7 +48,9 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
             children: [
               Expanded(
                 child: ColorSelection(
-                    itemCount: ChoseColorPage.itemCount, colors: colors),
+                    itemCount: ChoseColorPage.itemCount,
+                    colors: colors,
+                    controller: _controller),
               ),
             ],
           ),
@@ -58,6 +62,7 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
                   AutoRouter.of(context).push(const EmptyGameRoute());
+                  print(_controller.indexColor);
                 }),
             const SizedBox(height: 20),
             SecondaryButton(

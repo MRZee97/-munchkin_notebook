@@ -6,10 +6,11 @@ import 'package:munchkin/features/chose_gender/presentation/page/chose_gender_pa
 class GenderSelection extends StatefulWidget {
   GenderSelection({
     super.key,
-    required this.gender,
+    required this.controller,
   });
 
-  Gender gender;
+  GenderController controller;
+
   static const double height = 60;
   static const double width = 60;
   static const double opacitySelected = 1;
@@ -20,13 +21,6 @@ class GenderSelection extends StatefulWidget {
 }
 
 class _GenderSelectionState extends State<GenderSelection> {
-  late Gender _gender;
-  @override
-  void initState() {
-    super.initState();
-    _gender = widget.gender;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -35,11 +29,11 @@ class _GenderSelectionState extends State<GenderSelection> {
         InkWell(
           onTap: () {
             setState(() {
-              _gender = Gender.Man;
+              widget.controller.setGender(Gender.man);
             });
           },
           child: Opacity(
-            opacity: _gender == Gender.Man
+            opacity: widget.controller.gender == Gender.man
                 ? GenderSelection.opacitySelected
                 : GenderSelection.opacityUnselected,
             child: SizedBox(
@@ -57,11 +51,11 @@ class _GenderSelectionState extends State<GenderSelection> {
         InkWell(
           onTap: () {
             setState(() {
-              _gender = Gender.Woman;
+              widget.controller.setGender(Gender.woman);
             });
           },
           child: Opacity(
-            opacity: _gender == Gender.Woman
+            opacity: widget.controller.gender == Gender.woman
                 ? GenderSelection.opacitySelected
                 : GenderSelection.opacityUnselected,
             child: SizedBox(
@@ -75,5 +69,15 @@ class _GenderSelectionState extends State<GenderSelection> {
         ),
       ],
     );
+  }
+}
+
+class GenderController {
+  GenderController({required Gender initialvalue}) : gender = initialvalue;
+
+  Gender gender;
+
+  void setGender(Gender value) {
+    gender = value;
   }
 }

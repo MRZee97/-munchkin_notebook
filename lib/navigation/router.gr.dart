@@ -10,14 +10,14 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i10;
 import 'package:flutter/material.dart' as _i11;
-import 'package:munchkin/features/base_page/presentation/page/chose_color/presentation/page/chose_color_page.dart'
+import 'package:munchkin/features/chose_color/presentation/page/chose_color_page.dart'
     as _i8;
 import 'package:munchkin/features/chose_gender/presentation/page/chose_gender_page.dart'
     as _i1;
 import 'package:munchkin/features/create_game/presentation/page/create_game_page.dart'
     as _i2;
 import 'package:munchkin/features/empty_game/presentation/page/empty_game_page.dart'
-    as _i9;
+    as _i7;
 import 'package:munchkin/features/enter_code/presentation/page/enter_code_page.dart'
     as _i3;
 import 'package:munchkin/features/enter_name/presentation/page/enter_name_page.dart'
@@ -25,9 +25,9 @@ import 'package:munchkin/features/enter_name/presentation/page/enter_name_page.d
 import 'package:munchkin/features/join_game/presentation/page/join_game_page.dart'
     as _i5;
 import 'package:munchkin/features/max_level/presentation/page/max_level_page.dart'
-    as _i6;
+    as _i9;
 import 'package:munchkin/features/self_counting/presentation/page/self%20_counting_page.dart'
-    as _i7;
+    as _i6;
 
 abstract class $AppRouter extends _i10.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -68,18 +68,16 @@ abstract class $AppRouter extends _i10.RootStackRouter {
         child: const _i5.JoinGamePage(),
       );
     },
-    MaxLevelRoute.name: (routeData) {
-      final args = routeData.argsAs<MaxLevelRouteArgs>(
-          orElse: () => const MaxLevelRouteArgs());
-      return _i10.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i6.MaxLevelPage(key: args.key),
-      );
-    },
     SelfCoutingRoute.name: (routeData) {
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i7.SelfCoutingPage(),
+        child: const _i6.SelfCoutingPage(),
+      );
+    },
+    EmptyGameRoute.name: (routeData) {
+      return _i10.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i7.EmptyGamePage(),
       );
     },
     ChoseColorRoute.name: (routeData) {
@@ -90,10 +88,12 @@ abstract class $AppRouter extends _i10.RootStackRouter {
         child: _i8.ChoseColorPage(key: args.key),
       );
     },
-    EmptyGameRoute.name: (routeData) {
+    MaxLevelRoute.name: (routeData) {
+      final args = routeData.argsAs<MaxLevelRouteArgs>(
+          orElse: () => const MaxLevelRouteArgs());
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.EmptyGamePage(),
+        child: _i9.MaxLevelPage(key: args.key),
       );
     },
   };
@@ -200,36 +200,7 @@ class JoinGameRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.MaxLevelPage]
-class MaxLevelRoute extends _i10.PageRouteInfo<MaxLevelRouteArgs> {
-  MaxLevelRoute({
-    _i11.Key? key,
-    List<_i10.PageRouteInfo>? children,
-  }) : super(
-          MaxLevelRoute.name,
-          args: MaxLevelRouteArgs(key: key),
-          initialChildren: children,
-        );
-
-  static const String name = 'MaxLevelRoute';
-
-  static const _i10.PageInfo<MaxLevelRouteArgs> page =
-      _i10.PageInfo<MaxLevelRouteArgs>(name);
-}
-
-class MaxLevelRouteArgs {
-  const MaxLevelRouteArgs({this.key});
-
-  final _i11.Key? key;
-
-  @override
-  String toString() {
-    return 'MaxLevelRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for
-/// [_i7.SelfCoutingPage]
+/// [_i6.SelfCoutingPage]
 class SelfCoutingRoute extends _i10.PageRouteInfo<void> {
   const SelfCoutingRoute({List<_i10.PageRouteInfo>? children})
       : super(
@@ -238,6 +209,20 @@ class SelfCoutingRoute extends _i10.PageRouteInfo<void> {
         );
 
   static const String name = 'SelfCoutingRoute';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i7.EmptyGamePage]
+class EmptyGameRoute extends _i10.PageRouteInfo<void> {
+  const EmptyGameRoute({List<_i10.PageRouteInfo>? children})
+      : super(
+          EmptyGameRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EmptyGameRoute';
 
   static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
@@ -272,15 +257,30 @@ class ChoseColorRouteArgs {
 }
 
 /// generated route for
-/// [_i9.EmptyGamePage]
-class EmptyGameRoute extends _i10.PageRouteInfo<void> {
-  const EmptyGameRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          EmptyGameRoute.name,
+/// [_i9.MaxLevelPage]
+class MaxLevelRoute extends _i10.PageRouteInfo<MaxLevelRouteArgs> {
+  MaxLevelRoute({
+    _i11.Key? key,
+    List<_i10.PageRouteInfo>? children,
+  }) : super(
+          MaxLevelRoute.name,
+          args: MaxLevelRouteArgs(key: key),
           initialChildren: children,
         );
 
-  static const String name = 'EmptyGameRoute';
+  static const String name = 'MaxLevelRoute';
 
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+  static const _i10.PageInfo<MaxLevelRouteArgs> page =
+      _i10.PageInfo<MaxLevelRouteArgs>(name);
+}
+
+class MaxLevelRouteArgs {
+  const MaxLevelRouteArgs({this.key});
+
+  final _i11.Key? key;
+
+  @override
+  String toString() {
+    return 'MaxLevelRouteArgs{key: $key}';
+  }
 }

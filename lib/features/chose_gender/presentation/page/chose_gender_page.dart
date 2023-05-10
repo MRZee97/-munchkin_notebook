@@ -7,15 +7,16 @@ import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
-import 'gender_selection.dart';
+import '../widgets/gender_selection.dart';
 
-enum Gender { Man, Woman }
+enum Gender { man, woman }
 
 @RoutePage()
 class ChoseGenderPage extends StatelessWidget {
   ChoseGenderPage({super.key});
 
-  Gender _gender = Gender.Man;
+  final GenderController _controller =
+      GenderController(initialvalue: Gender.man);
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -29,7 +30,7 @@ class ChoseGenderPage extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           GenderSelection(
-            gender: _gender,
+            controller: _controller,
           ),
         ]),
         actions: Column(
@@ -39,6 +40,7 @@ class ChoseGenderPage extends StatelessWidget {
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
                   AutoRouter.of(context).push(ChoseColorRoute());
+                  print(_controller.gender);
                 }),
             const SizedBox(height: 20),
             SecondaryButton(

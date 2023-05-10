@@ -5,21 +5,22 @@ class ColorSelection extends StatefulWidget {
     super.key,
     required this.itemCount,
     required this.colors,
+    required this.controller,
   });
 
   final int itemCount;
   final List colors;
+  final ColorController controller;
 
   @override
   State<ColorSelection> createState() => _ColorSelectionState();
 }
 
 class _ColorSelectionState extends State<ColorSelection> {
-  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 5,
           mainAxisExtent: 40,
           mainAxisSpacing: 10,
@@ -30,11 +31,11 @@ class _ColorSelectionState extends State<ColorSelection> {
           return InkWell(
             onTap: () {
               setState(() {
-                _selectedIndex = index;
+                widget.controller.setIndex(index);
               });
             },
             child: Container(
-              child: _selectedIndex == index
+              child: widget.controller.indexColor == index
                   ? Icon(
                       Icons.check,
                       color: Colors.black,
@@ -48,5 +49,15 @@ class _ColorSelectionState extends State<ColorSelection> {
             ),
           );
         });
+  }
+}
+
+class ColorController {
+  ColorController({required int initialvalue}) : indexColor = initialvalue;
+
+  int indexColor;
+
+  void setIndex(int value) {
+    indexColor = value;
   }
 }
