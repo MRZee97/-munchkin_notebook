@@ -19,7 +19,7 @@ class ChoseColorPage extends StatefulWidget {
 }
 
 class _ChoseColorPageState extends State<ChoseColorPage> {
-  final ColorController _controller = ColorController(initialvalue: 0);
+  late ColorController _controller;
   List generateColors() {
     final List colors = [];
     for (int k = 0; k <= ChoseColorPage.itemCount; k++) {
@@ -32,16 +32,17 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
   @override
   void initState() {
     super.initState();
-    colors = generateColors();
+    _colors = generateColors();
+    _controller = ColorController(initialvalue: _colors[0]);
   }
 
-  List colors = [];
+  List _colors = [];
 
   @override
   Widget build(BuildContext context) {
     return BasePage(
         title: AppLocalizations.of(context)!.colorChose,
-        body: Container(
+        body: SizedBox(
           height: MediaQuery.of(context).size.height / 2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -49,7 +50,7 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
               Expanded(
                 child: ColorSelection(
                     itemCount: ChoseColorPage.itemCount,
-                    colors: colors,
+                    colors: _colors,
                     controller: _controller),
               ),
             ],

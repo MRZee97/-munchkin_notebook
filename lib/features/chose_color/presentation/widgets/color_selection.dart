@@ -31,11 +31,11 @@ class _ColorSelectionState extends State<ColorSelection> {
           return InkWell(
             onTap: () {
               setState(() {
-                widget.controller.setIndex(index);
+                widget.controller.setIndex(widget.colors[index]);
               });
             },
             child: Container(
-              child: widget.controller.indexColor == index
+              child: widget.controller.indexColor == widget.colors[index]
                   ? Icon(
                       Icons.check,
                       color: Colors.black,
@@ -53,11 +53,11 @@ class _ColorSelectionState extends State<ColorSelection> {
 }
 
 class ColorController {
-  ColorController({required int initialvalue}) : indexColor = initialvalue;
+  ColorController({required Color initialvalue}) : indexColor = initialvalue;
 
-  int indexColor;
+  Color indexColor;
 
-  void setIndex(int value) {
+  void setIndex(Color value) {
     indexColor = value;
   }
 }

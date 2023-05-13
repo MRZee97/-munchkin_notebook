@@ -9,8 +9,22 @@ import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
-class EnterNamePage extends StatelessWidget {
+class EnterNamePage extends StatefulWidget {
   const EnterNamePage({super.key});
+
+  @override
+  State<EnterNamePage> createState() => _EnterNamePageState();
+}
+
+class _EnterNamePageState extends State<EnterNamePage> {
+  String name = "";
+  final _nameEditingController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +41,13 @@ class EnterNamePage extends StatelessWidget {
               horizontal: 40,
             ),
             child: TextField(
+              controller: _nameEditingController,
               textAlign: TextAlign.center,
               onSubmitted: (value) {
                 AutoRouter.of(context).push(
                   ChoseGenderRoute(),
                 );
+                name = _nameEditingController.text;
               },
               style: const TextStyle(
                   fontSize: 36,
@@ -56,9 +72,8 @@ class EnterNamePage extends StatelessWidget {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
-                  AutoRouter.of(context).push(
-                    ChoseGenderRoute(),
-                  );
+                  AutoRouter.of(context).push(ChoseGenderRoute());
+                  name = _nameEditingController.text;
                 }),
             const SizedBox(height: 20),
             SecondaryButton(
