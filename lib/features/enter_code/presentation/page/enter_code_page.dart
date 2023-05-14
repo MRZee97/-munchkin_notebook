@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
-import 'package:munchkin/features/enter_code/presentation/widgets/pin_code.dart';
+import 'package:munchkin/features/enter_code/presentation/widgets/rendering_pin.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
@@ -42,13 +42,7 @@ class _EnterCodePageState extends State<EnterCodePage> {
         title: AppLocalizations.of(context)!.enterCode,
         body: Column(children: [
           const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              for (int k = 0; k < numberCells; k++)
-                Otp(controller: pincodes[k]),
-            ],
-          ),
+          RenderingPin(numberCells: numberCells, pincodes: pincodes),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),

@@ -6,10 +6,12 @@ import 'package:munchkin/features/chose_gender/presentation/page/chose_gender_pa
 class GenderSelection extends StatefulWidget {
   GenderSelection({
     super.key,
-    required this.controller,
+    required this.choseGender,
+    required this.onTap,
   });
 
-  GenderController controller;
+  final Function(Gender) onTap;
+  final Gender choseGender;
 
   static const double height = 60;
   static const double width = 60;
@@ -28,12 +30,10 @@ class _GenderSelectionState extends State<GenderSelection> {
       children: [
         InkWell(
           onTap: () {
-            setState(() {
-              widget.controller.setGender(Gender.man);
-            });
+            widget.onTap(Gender.man);
           },
           child: Opacity(
-            opacity: widget.controller.gender == Gender.man
+            opacity: widget.choseGender == Gender.man
                 ? GenderSelection.opacitySelected
                 : GenderSelection.opacityUnselected,
             child: SizedBox(
@@ -50,12 +50,10 @@ class _GenderSelectionState extends State<GenderSelection> {
         )),
         InkWell(
           onTap: () {
-            setState(() {
-              widget.controller.setGender(Gender.woman);
-            });
+            widget.onTap(Gender.woman);
           },
           child: Opacity(
-            opacity: widget.controller.gender == Gender.woman
+            opacity: widget.choseGender == Gender.woman
                 ? GenderSelection.opacitySelected
                 : GenderSelection.opacityUnselected,
             child: SizedBox(
@@ -69,15 +67,5 @@ class _GenderSelectionState extends State<GenderSelection> {
         ),
       ],
     );
-  }
-}
-
-class GenderController {
-  GenderController({required Gender initialvalue}) : gender = initialvalue;
-
-  Gender gender;
-
-  void setGender(Gender value) {
-    gender = value;
   }
 }

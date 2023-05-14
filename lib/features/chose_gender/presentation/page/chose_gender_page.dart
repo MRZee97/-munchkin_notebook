@@ -12,11 +12,15 @@ import '../widgets/gender_selection.dart';
 enum Gender { man, woman }
 
 @RoutePage()
-class ChoseGenderPage extends StatelessWidget {
+class ChoseGenderPage extends StatefulWidget {
   ChoseGenderPage({super.key});
 
-  final GenderController _controller =
-      GenderController(initialvalue: Gender.man);
+  @override
+  State<ChoseGenderPage> createState() => _ChoseGenderPageState();
+}
+
+class _ChoseGenderPageState extends State<ChoseGenderPage> {
+  Gender _choseGender = Gender.man;
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -30,7 +34,12 @@ class ChoseGenderPage extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           GenderSelection(
-            controller: _controller,
+            choseGender: _choseGender,
+            onTap: (gender) {
+              setState(() {
+                _choseGender = gender;
+              });
+            },
           ),
         ]),
         actions: Column(
@@ -40,7 +49,7 @@ class ChoseGenderPage extends StatelessWidget {
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
                   AutoRouter.of(context).push(ChoseColorRoute());
-                  print(_controller.gender);
+                  print(_choseGender);
                 }),
             const SizedBox(height: 20),
             SecondaryButton(

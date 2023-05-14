@@ -5,12 +5,14 @@ class ColorSelection extends StatefulWidget {
     super.key,
     required this.itemCount,
     required this.colors,
-    required this.controller,
+    required this.onTap,
+    required this.choseColor,
   });
 
   final int itemCount;
   final List colors;
-  final ColorController controller;
+  final Function(Color) onTap;
+  final Color choseColor;
 
   @override
   State<ColorSelection> createState() => _ColorSelectionState();
@@ -30,34 +32,22 @@ class _ColorSelectionState extends State<ColorSelection> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              setState(() {
-                widget.controller.setIndex(widget.colors[index]);
-              });
+              widget.onTap(widget.colors[index]);
             },
             child: Container(
-              child: widget.controller.indexColor == widget.colors[index]
-                  ? Icon(
-                      Icons.check,
-                      color: Colors.black,
-                    )
-                  : null,
               width: 30.0,
               decoration: BoxDecoration(
                 color: widget.colors[index],
                 shape: BoxShape.circle,
               ),
+              child: widget.choseColor == widget.colors[index]
+                  ? const Icon(
+                      Icons.check,
+                      color: Colors.black,
+                    )
+                  : null,
             ),
           );
         });
-  }
-}
-
-class ColorController {
-  ColorController({required Color initialvalue}) : indexColor = initialvalue;
-
-  Color indexColor;
-
-  void setIndex(Color value) {
-    indexColor = value;
   }
 }

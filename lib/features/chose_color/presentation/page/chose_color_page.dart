@@ -19,7 +19,7 @@ class ChoseColorPage extends StatefulWidget {
 }
 
 class _ChoseColorPageState extends State<ChoseColorPage> {
-  late ColorController _controller;
+  late Color _choseColor;
   List generateColors() {
     final List colors = [];
     for (int k = 0; k <= ChoseColorPage.itemCount; k++) {
@@ -33,7 +33,7 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
   void initState() {
     super.initState();
     _colors = generateColors();
-    _controller = ColorController(initialvalue: _colors[0]);
+    _choseColor = _colors[0];
   }
 
   List _colors = [];
@@ -51,7 +51,12 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
                 child: ColorSelection(
                     itemCount: ChoseColorPage.itemCount,
                     colors: _colors,
-                    controller: _controller),
+                    choseColor: _choseColor,
+                    onTap: (color) {
+                      setState(() {
+                        _choseColor = color;
+                      });
+                    }),
               ),
             ],
           ),
@@ -63,7 +68,7 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
                   AutoRouter.of(context).push(const EmptyGameRoute());
-                  print(_controller.indexColor);
+                  print(_choseColor);
                 }),
             const SizedBox(height: 20),
             SecondaryButton(
