@@ -8,13 +8,13 @@ import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
-class JoinGamePage extends StatelessWidget {
-  const JoinGamePage({super.key});
+class EmptyGamePage extends StatelessWidget {
+  const EmptyGamePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BasePage(
-        title: AppLocalizations.of(context)!.joinGame,
+        title: AppLocalizations.of(context)!.gameScrinEmpty,
         body: Column(children: [
           const SizedBox(height: 20),
           Container(
@@ -26,7 +26,7 @@ class JoinGamePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              AppLocalizations.of(context)!.textJoinGame,
+              AppLocalizations.of(context)!.textEmptyGame,
               style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
@@ -38,16 +38,14 @@ class JoinGamePage extends StatelessWidget {
         actions: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            PrimaryButton(
-                text: AppLocalizations.of(context)!.joinGameButton,
-                onPressed: () {
-                  AutoRouter.of(context).push(EnterCodeRoute());
-                }),
-            const SizedBox(height: 20),
-            SecondaryButton(
-                text: AppLocalizations.of(context)!.gameNotCreatedButton,
+            IconButton(
+                iconSize: 70,
+                icon: const Icon(
+                  Icons.more_horiz,
+                  color: AppColors.titleColor,
+                ),
                 onPressed: () {}),
-            const SizedBox(height: 38),
+            const SizedBox(height: 20),
           ],
         ));
   }

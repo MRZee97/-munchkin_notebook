@@ -4,73 +4,46 @@ import 'package:munchkin/core/ui/constants/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
-import 'package:munchkin/features/base_page/presentation/page/base_page.dart';
+import 'package:munchkin/features/base_page/presentation/base_page.dart';
+import 'package:munchkin/features/enter_code/presentation/widgets/rendering_pin.dart';
 import 'package:munchkin/navigation/router.gr.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 
 @RoutePage()
 class EnterCodePage extends StatefulWidget {
-  const EnterCodePage({super.key});
+  EnterCodePage({super.key});
 
   @override
   State<EnterCodePage> createState() => _EnterCodePageState();
 }
 
 class _EnterCodePageState extends State<EnterCodePage> {
+  List generatePin() {
+    final List pincodes = [];
+
+    for (int k = 0; k < numberCells; k++) {
+      pincodes.add(TextEditingController());
+    }
+    return pincodes;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    pincodes = generatePin();
+  }
+
+  List pincodes = [];
+  int numberCells = 4;
+  String _pincode = "";
+
   @override
   Widget build(BuildContext context) {
     return BasePage(
         title: AppLocalizations.of(context)!.enterCode,
         body: Column(children: [
           const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 300,
-                child: PinCodeTextField(
-                  appContext: context,
-                  length: 5,
-                  keyboardType: TextInputType.number,
-                  textStyle: const TextStyle(
-                    color: Colors.black,
-                    fontFamily: "academy",
-                    fontWeight: FontWeight.w700,
-                    fontSize: 48,
-                  ),
-                  obscureText: false,
-                  animationType: AnimationType.fade,
-                  pinTheme: PinTheme(
-                    borderWidth: 3,
-                    shape: PinCodeFieldShape.underline,
-                    borderRadius: BorderRadius.circular(5),
-                    fieldOuterPadding:
-                        const EdgeInsets.symmetric(horizontal: 3),
-                    fieldHeight: 50,
-                    fieldWidth: 40,
-                    activeFillColor: Colors.transparent,
-                    activeColor: Colors.black,
-                    selectedColor: Colors.black,
-                    inactiveColor: Colors.black,
-                  ),
-                  animationDuration: const Duration(milliseconds: 300),
-                  onCompleted: (v) {
-                    print("Completed");
-                  },
-                  onChanged: (value) {
-                    print(value);
-                    setState(() {
-                      // currentText = value;
-                    });
-                  },
-                  beforeTextPaste: (text) {
-                    print("Allowing to paste $text");
-                    return true;
-                  },
-                ),
-              ),
-            ],
-          ),
+          RenderingPin(numberCells: numberCells, pincodes: pincodes),
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
@@ -88,7 +61,12 @@ class _EnterCodePageState extends State<EnterCodePage> {
           children: [
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
-                onPressed: () {}),
+                onPressed: () {
+                  for (TextEditingController pincode in pincodes) {
+                    _pincode += pincode.text;
+                  }
+                  print(_pincode);
+                }),
             const SizedBox(height: 20),
             SecondaryButton(
                 text: AppLocalizations.of(context)!.returnStartScreenButton,

@@ -4,12 +4,17 @@ import 'package:munchkin/core/ui/constants/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
-import 'package:munchkin/features/base_page/presentation/page/base_page.dart';
+import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
+
+import 'level_selection.dart';
 
 @RoutePage()
 class MaxLevelPage extends StatelessWidget {
-  const MaxLevelPage({super.key});
+  MaxLevelPage({super.key});
+
+  final MaxLevelController _maxLevelController =
+      MaxLevelController(initialvalue: 7);
 
   @override
   Widget build(BuildContext context) {
@@ -18,34 +23,8 @@ class MaxLevelPage extends StatelessWidget {
           title: AppLocalizations.of(context)!.maxLevel,
           body: Column(children: [
             const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: IconButton(
-                    iconSize: 70,
-                    icon: const Icon(
-                      Icons.arrow_left_outlined,
-                      color: AppColors.titleColor,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-                const Text("10",
-                    style: TextStyle(
-                        fontSize: 48,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.titleColor,
-                        fontFamily: "academy")),
-                IconButton(
-                  iconSize: 70,
-                  icon: const Icon(
-                    Icons.arrow_right_outlined,
-                    color: AppColors.titleColor,
-                  ),
-                  onPressed: () {},
-                )
-              ],
+            LvlSelectionGroup(
+              controller: _maxLevelController,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),

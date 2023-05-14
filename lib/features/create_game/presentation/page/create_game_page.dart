@@ -5,7 +5,7 @@ import 'package:munchkin/core/ui/widgets/image_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
-import 'package:munchkin/features/base_page/presentation/page/base_page.dart';
+import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
@@ -40,7 +40,7 @@ class CreateGamePage extends StatelessWidget {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.createGame,
                 onPressed: () {
-                  AutoRouter.of(context).push(const MaxLevelRoute());
+                  AutoRouter.of(context).push(MaxLevelRoute());
                 }),
             const SizedBox(height: 20),
             SecondaryButton(

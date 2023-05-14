@@ -7,14 +7,24 @@ import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
-@RoutePage()
-class JoinGamePage extends StatelessWidget {
-  const JoinGamePage({super.key});
+import '../widgets/gender_selection.dart';
 
+enum Gender { man, woman }
+
+@RoutePage()
+class ChoseGenderPage extends StatefulWidget {
+  ChoseGenderPage({super.key});
+
+  @override
+  State<ChoseGenderPage> createState() => _ChoseGenderPageState();
+}
+
+class _ChoseGenderPageState extends State<ChoseGenderPage> {
+  Gender _choseGender = Gender.man;
   @override
   Widget build(BuildContext context) {
     return BasePage(
-        title: AppLocalizations.of(context)!.joinGame,
+        title: AppLocalizations.of(context)!.sexChose,
         body: Column(children: [
           const SizedBox(height: 20),
           Container(
@@ -23,31 +33,31 @@ class JoinGamePage extends StatelessWidget {
             height: 160,
           ),
           const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              AppLocalizations.of(context)!.textJoinGame,
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.titleColor,
-                  fontFamily: "academy"),
-            ),
+          GenderSelection(
+            choseGender: _choseGender,
+            onTap: (gender) {
+              setState(() {
+                _choseGender = gender;
+              });
+            },
           ),
         ]),
         actions: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             PrimaryButton(
-                text: AppLocalizations.of(context)!.joinGameButton,
+                text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
-                  AutoRouter.of(context).push(EnterCodeRoute());
+                  AutoRouter.of(context).push(ChoseColorRoute());
+                  print(_choseGender);
                 }),
             const SizedBox(height: 20),
             SecondaryButton(
-                text: AppLocalizations.of(context)!.gameNotCreatedButton,
-                onPressed: () {}),
-            const SizedBox(height: 38),
+                text: AppLocalizations.of(context)!.backName,
+                onPressed: () {
+                  AutoRouter.of(context).pop(const EnterNameRoute());
+                }),
+            const SizedBox(height: 20),
           ],
         ));
   }
