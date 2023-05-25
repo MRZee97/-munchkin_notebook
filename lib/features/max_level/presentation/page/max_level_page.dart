@@ -44,7 +44,8 @@ class MaxLevelPage extends StatelessWidget {
               PrimaryButton(
                   text: AppLocalizations.of(context)!.resumeButton,
                   onPressed: () {
-                    AutoRouter.of(context).push(const SelfCoutingRoute());
+                    AutoRouter.of(context).push(SelfCoutingRoute(
+                        maxLevel: _maxLevelController.getCurrentLevel));
                   }),
               const SizedBox(height: 20),
               SecondaryButton(

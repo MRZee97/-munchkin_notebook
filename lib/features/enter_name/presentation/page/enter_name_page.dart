@@ -45,7 +45,8 @@ class _EnterNamePageState extends State<EnterNamePage> {
               textAlign: TextAlign.center,
               onSubmitted: (value) {
                 AutoRouter.of(context).push(
-                  ChoseGenderRoute(),
+                  ChoseGenderRoute(
+                      selectedNameUser: _nameEditingController.text),
                 );
                 name = _nameEditingController.text;
               },
@@ -72,7 +73,8 @@ class _EnterNamePageState extends State<EnterNamePage> {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
-                  AutoRouter.of(context).push(ChoseGenderRoute());
+                  AutoRouter.of(context).push(ChoseGenderRoute(
+                      selectedNameUser: _nameEditingController.text));
                   name = _nameEditingController.text;
                 }),
             const SizedBox(height: 20),
