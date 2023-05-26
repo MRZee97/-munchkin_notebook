@@ -8,12 +8,19 @@ import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
 
 import 'package:munchkin/features/chose_color/presentation/widgets/color_selection.dart';
+import 'package:munchkin/features/chose_gender/presentation/page/chose_gender_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
 class ChoseColorPage extends StatefulWidget {
-  ChoseColorPage({super.key});
+  ChoseColorPage(
+      {super.key,
+      required this.selectedNameUser,
+      required this.selectedGenderUser});
   static const itemCount = 35;
+  final String selectedNameUser;
+  final Gender selectedGenderUser;
+
   @override
   State<ChoseColorPage> createState() => _ChoseColorPageState();
 }
@@ -67,14 +74,14 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
-                  AutoRouter.of(context).push(const EmptyGameRoute());
+                  context.router.push(const EmptyGameRoute());
                   print(_choseColor);
                 }),
             const SizedBox(height: 20),
             SecondaryButton(
                 text: AppLocalizations.of(context)!.returnSexButton,
                 onPressed: () {
-                  AutoRouter.of(context).pop(ChoseGenderRoute());
+                  context.router.pop();
                 }),
             const SizedBox(height: 38),
           ],

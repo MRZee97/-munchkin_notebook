@@ -13,7 +13,9 @@ enum Gender { man, woman }
 
 @RoutePage()
 class ChoseGenderPage extends StatefulWidget {
-  ChoseGenderPage({super.key});
+  const ChoseGenderPage({super.key, required this.selectedNameUser});
+
+  final String selectedNameUser;
 
   @override
   State<ChoseGenderPage> createState() => _ChoseGenderPageState();
@@ -48,14 +50,15 @@ class _ChoseGenderPageState extends State<ChoseGenderPage> {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
-                  AutoRouter.of(context).push(ChoseColorRoute());
-                  print(_choseGender);
+                  context.router.push(ChoseColorRoute(
+                      selectedNameUser: widget.selectedNameUser,
+                      selectedGenderUser: _choseGender));
                 }),
             const SizedBox(height: 20),
             SecondaryButton(
                 text: AppLocalizations.of(context)!.backName,
                 onPressed: () {
-                  AutoRouter.of(context).pop(const EnterNameRoute());
+                  context.router.pop();
                 }),
             const SizedBox(height: 20),
           ],

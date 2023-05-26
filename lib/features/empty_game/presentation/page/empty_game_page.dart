@@ -44,7 +44,9 @@ class EmptyGamePage extends StatelessWidget {
                   Icons.more_horiz,
                   color: AppColors.titleColor,
                 ),
-                onPressed: () {}),
+                onPressed: () {
+                  context.router.push(GameOptionRoute());
+                }),
             const SizedBox(height: 20),
           ],
         ));

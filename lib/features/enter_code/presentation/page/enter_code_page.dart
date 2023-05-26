@@ -71,7 +71,7 @@ class _EnterCodePageState extends State<EnterCodePage> {
             SecondaryButton(
                 text: AppLocalizations.of(context)!.returnStartScreenButton,
                 onPressed: () {
-                  AutoRouter.of(context).replaceAll([const CreateGameRoute()]);
+                  context.router.replaceAll([const CreateGameRoute()]);
                 }),
             const SizedBox(height: 20),
           ],

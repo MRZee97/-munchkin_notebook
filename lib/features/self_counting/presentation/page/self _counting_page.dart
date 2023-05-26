@@ -5,11 +5,15 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
+import 'package:munchkin/features/game/presentation/bloc/game_bloc.dart';
+import 'package:munchkin/main.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
 class SelfCoutingPage extends StatelessWidget {
-  const SelfCoutingPage({super.key});
+  const SelfCoutingPage({super.key, required this.maxLevel});
+
+  final int maxLevel;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +57,7 @@ class SelfCoutingPage extends StatelessWidget {
             SecondaryButton(
                 text: AppLocalizations.of(context)!.backMaximumLevelButton,
                 onPressed: () {
-                  AutoRouter.of(context).pop(MaxLevelRoute());
+                  context.router.pop();
                 }),
             const SizedBox(height: 20),
           ],
