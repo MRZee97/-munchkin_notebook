@@ -73,7 +73,7 @@ class _EnterNamePageState extends State<EnterNamePage> {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
-                  AutoRouter.of(context).push(ChoseGenderRoute(
+                  context.router.push(ChoseGenderRoute(
                       selectedNameUser: _nameEditingController.text));
                   name = _nameEditingController.text;
                 }),

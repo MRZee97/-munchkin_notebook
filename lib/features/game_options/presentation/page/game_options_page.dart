@@ -98,7 +98,9 @@ class GameOptionPage extends StatelessWidget {
             const SizedBox(height: 20),
             SecondaryButton(
                 text: AppLocalizations.of(context)!.buttonReturnGame,
-                onPressed: () {}),
+                onPressed: () {
+                  context.router.pop();
+                }),
             const SizedBox(height: 38),
           ],
         ));

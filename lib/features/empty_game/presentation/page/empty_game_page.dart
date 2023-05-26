@@ -45,7 +45,7 @@ class EmptyGamePage extends StatelessWidget {
                   color: AppColors.titleColor,
                 ),
                 onPressed: () {
-                  AutoRouter.of(context).push(GameOptionRoute());
+                  context.router.push(GameOptionRoute());
                 }),
             const SizedBox(height: 20),
           ],

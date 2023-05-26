@@ -50,7 +50,7 @@ class _ChoseGenderPageState extends State<ChoseGenderPage> {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
-                  AutoRouter.of(context).push(ChoseColorRoute(
+                  context.router.push(ChoseColorRoute(
                       selectedNameUser: widget.selectedNameUser,
                       selectedGenderUser: _choseGender));
                 }),
@@ -58,7 +58,7 @@ class _ChoseGenderPageState extends State<ChoseGenderPage> {
             SecondaryButton(
                 text: AppLocalizations.of(context)!.backName,
                 onPressed: () {
-                  AutoRouter.of(context).pop(const EnterNameRoute());
+                  context.router.pop();
                 }),
             const SizedBox(height: 20),
           ],

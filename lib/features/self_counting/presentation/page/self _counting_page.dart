@@ -57,7 +57,7 @@ class SelfCoutingPage extends StatelessWidget {
             SecondaryButton(
                 text: AppLocalizations.of(context)!.backMaximumLevelButton,
                 onPressed: () {
-                  AutoRouter.of(context).pop(MaxLevelRoute());
+                  context.router.pop();
                 }),
             const SizedBox(height: 20),
           ],

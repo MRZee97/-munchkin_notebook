@@ -74,15 +74,14 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
-                  AutoRouter.of(context).push(const EmptyGameRoute());
+                  context.router.push(const EmptyGameRoute());
                   print(_choseColor);
                 }),
             const SizedBox(height: 20),
             SecondaryButton(
                 text: AppLocalizations.of(context)!.returnSexButton,
                 onPressed: () {
-                  AutoRouter.of(context)
-                      .pop(ChoseGenderRoute(selectedNameUser: ""));
+                  context.router.pop();
                 }),
             const SizedBox(height: 38),
           ],

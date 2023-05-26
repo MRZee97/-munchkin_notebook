@@ -51,7 +51,7 @@ class MaxLevelPage extends StatelessWidget {
               SecondaryButton(
                   text: AppLocalizations.of(context)!.willButtonReturn,
                   onPressed: () {
-                    AutoRouter.of(context).pop(const CreateGameRoute());
+                    context.router.pop();
                   }),
               const SizedBox(height: 38),
             ],
