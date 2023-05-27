@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:munchkin/features/game/domain/entities/game.dart';
 import 'package:munchkin/features/game/domain/entities/player.dart';
 
@@ -21,6 +21,12 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       if (event is ChangeGameMaxLevel) {
         if (game != null) {
           game?.maxLevel = event.maxLevel;
+          emit(GameCreated(game!));
+        }
+      }
+      if (event is AddPlayer) {
+        if (game != null) {
+          game?.players.add(event.player);
           emit(GameCreated(game!));
         }
       }

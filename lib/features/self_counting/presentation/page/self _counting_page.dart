@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
-import 'package:munchkin/features/game/presentation/bloc/game_bloc.dart';
+import 'package:munchkin/features/game/presentation/bloc/game_bloc/game_bloc.dart';
 import 'package:munchkin/main.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
@@ -45,12 +45,14 @@ class SelfCoutingPage extends StatelessWidget {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.masterGameButton,
                 onPressed: () {
+                  gameBloc.add(CreateGame(maxLevel, false, []));
                   AutoRouter.of(context).push(const JoinGameRoute());
                 }),
             const SizedBox(height: 20),
             PrimaryButton(
                 text: AppLocalizations.of(context)!.countsPointsButton,
                 onPressed: () {
+                  gameBloc.add(CreateGame(maxLevel, true, []));
                   AutoRouter.of(context).push(const EnterNameRoute());
                 }),
             const SizedBox(height: 20),

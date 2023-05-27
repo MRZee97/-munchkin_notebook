@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:munchkin/core/ui/constants/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
-import 'package:munchkin/navigation/router.gr.dart';
+import 'package:munchkin/features/game/presentation/bloc/game_bloc/game_bloc.dart';
+import 'package:munchkin/main.dart';
 
 @RoutePage()
 class GameOptionPage extends StatelessWidget {
@@ -23,73 +25,100 @@ class GameOptionPage extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Expanded(
-            child: Column(children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.gameCode,
-                    style: textRendering,
-                  ),
-                  IconButton(
-                      iconSize: 25,
-                      icon: const Icon(
-                        Icons.more_horiz,
-                        color: AppColors.titleColor,
-                      ),
-                      onPressed: () {}),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.numberPlayers,
-                    style: textRendering,
-                  ),
-                  IconButton(
-                      iconSize: 25,
-                      icon: const Icon(
-                        Icons.more_horiz,
-                        color: AppColors.titleColor,
-                      ),
-                      onPressed: () {}),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.level,
-                    style: textRendering,
-                  ),
-                  IconButton(
-                      iconSize: 25,
-                      icon: const Icon(
-                        Icons.more_horiz,
-                        color: AppColors.titleColor,
-                      ),
-                      onPressed: () {}),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.scorePoints,
-                    style: textRendering,
-                  ),
-                  IconButton(
-                      iconSize: 25,
-                      icon: const Icon(
-                        Icons.more_horiz,
-                        color: AppColors.titleColor,
-                      ),
-                      onPressed: () {}),
-                ],
-              ),
-              const SizedBox(height: 20),
-            ]),
+            child: BlocBuilder<GameBloc, GameState>(
+              bloc: gameBloc,
+              builder: (context, state) {
+                if (state is GameCreated) {
+                  return Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.gameCode,
+                          style: textRendering,
+                        ),
+                        IconButton(
+                            iconSize: 25,
+                            icon: const Icon(
+                              Icons.more_horiz,
+                              color: AppColors.titleColor,
+                            ),
+                            onPressed: () {}),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.numberPlayers,
+                              style: textRendering,
+                            ),
+                            Text(
+                              state.game.players.length.toString(),
+                              style: textRendering,
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                            iconSize: 25,
+                            icon: const Icon(
+                              Icons.more_horiz,
+                              color: AppColors.titleColor,
+                            ),
+                            onPressed: () {}),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.level,
+                              style: textRendering,
+                            ),
+                            Text(
+                              state.game.maxLevel.toString(),
+                              style: textRendering,
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                            iconSize: 25,
+                            icon: const Icon(
+                              Icons.more_horiz,
+                              color: AppColors.titleColor,
+                            ),
+                            onPressed: () {}),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          state.game.isAnarchy
+                              ? "Каждый считает очки сам"
+                              : "Я буду мастером игры",
+                          style: textRendering,
+                        ),
+                        IconButton(
+                            iconSize: 25,
+                            icon: const Icon(
+                              Icons.more_horiz,
+                              color: AppColors.titleColor,
+                            ),
+                            onPressed: () {}),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                  ]);
+                } else {
+                  return Container();
+                }
+              },
+            ),
           ),
         ),
         actions: Column(
