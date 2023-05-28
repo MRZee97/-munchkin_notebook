@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:munchkin/core/ui/constants/app_theme.dart';
-import 'package:munchkin/features/game/presentation/bloc/game_bloc.dart';
+import 'package:munchkin/features/game/presentation/bloc/game_bloc/game_bloc.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

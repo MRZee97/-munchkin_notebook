@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
-import 'package:munchkin/features/game/presentation/bloc/game_bloc.dart';
+import 'package:munchkin/features/game/presentation/bloc/game_bloc/game_bloc.dart';
 import 'package:munchkin/main.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 

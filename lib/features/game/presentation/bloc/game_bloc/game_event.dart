@@ -16,3 +16,9 @@ class ChangeGameMaxLevel extends GameEvent {
 
   ChangeGameMaxLevel(this.maxLevel);
 }
+
+class AddPlayer extends GameEvent {
+  final Player player;
+
+  AddPlayer(this.player);
+}

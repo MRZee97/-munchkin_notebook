@@ -44,6 +44,8 @@
   "gameParameters": "Параметры игры",
   "gameCode": "Код игры:",
   "numberPlayers": "Игроков:",
+  "independently": "Каждый считает очки сам",
+  "gameMaster": "Я буду мастером игры",
   "level": "Максимальный уровень:",
   "buttonReturnGame": "Вернутся к игре",
   "scorePoints": "Каждый считает очки сам"
