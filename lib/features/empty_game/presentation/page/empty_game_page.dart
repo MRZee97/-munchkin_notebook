@@ -5,7 +5,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
-import 'package:munchkin/features/game/presentation/bloc/join_game_bloc/join_game_bloc.dart';
 import 'package:munchkin/main.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
