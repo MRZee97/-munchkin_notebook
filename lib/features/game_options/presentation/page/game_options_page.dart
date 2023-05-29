@@ -7,6 +7,7 @@ import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/features/game/presentation/bloc/game_bloc/game_bloc.dart';
 import 'package:munchkin/main.dart';
+import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
 class GameOptionPage extends StatelessWidget {
@@ -67,7 +68,9 @@ class GameOptionPage extends StatelessWidget {
                               Icons.more_horiz,
                               color: AppColors.titleColor,
                             ),
-                            onPressed: () {}),
+                            onPressed: () {
+                              context.router.push(ListPlayersRoute());
+                            }),
                       ],
                     ),
                     Row(
