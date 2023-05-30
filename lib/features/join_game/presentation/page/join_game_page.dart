@@ -47,7 +47,7 @@ class JoinGamePage extends StatelessWidget {
             SecondaryButton(
                 text: AppLocalizations.of(context)!.gameNotCreatedButton,
                 onPressed: () {
-                  context.router.pop();
+                  context.router.replaceAll([const CreateGameRoute()]);
                 }),
             const SizedBox(height: 38),
           ],

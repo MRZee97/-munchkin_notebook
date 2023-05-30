@@ -9,6 +9,9 @@ import 'package:munchkin/features/base_page/presentation/base_page.dart';
 
 import 'package:munchkin/features/chose_color/presentation/widgets/color_selection.dart';
 import 'package:munchkin/features/chose_gender/presentation/page/chose_gender_page.dart';
+import 'package:munchkin/features/game/domain/entities/player.dart';
+import 'package:munchkin/features/game/presentation/bloc/game_bloc/game_bloc.dart';
+import 'package:munchkin/main.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
@@ -74,8 +77,11 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.resumeButton,
                 onPressed: () {
+                  gameBloc.add(AddPlayer(Player(
+                      name: widget.selectedNameUser,
+                      gender: widget.selectedGenderUser,
+                      color: _choseColor)));
                   context.router.push(const EmptyGameRoute());
-                  print(_choseColor);
                 }),
             const SizedBox(height: 20),
             SecondaryButton(

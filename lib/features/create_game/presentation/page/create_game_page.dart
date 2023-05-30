@@ -45,7 +45,9 @@ class CreateGamePage extends StatelessWidget {
             const SizedBox(height: 20),
             SecondaryButton(
                 text: AppLocalizations.of(context)!.gameButtonCreated,
-                onPressed: () {}),
+                onPressed: () {
+                  context.router.push(const JoinGameRoute());
+                }),
             const SizedBox(height: 38),
           ],
         ));
