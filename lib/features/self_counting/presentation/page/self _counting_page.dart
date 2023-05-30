@@ -46,7 +46,7 @@ class SelfCoutingPage extends StatelessWidget {
                 text: AppLocalizations.of(context)!.masterGameButton,
                 onPressed: () {
                   gameBloc.add(CreateGame(maxLevel, false, []));
-                  AutoRouter.of(context).push(const EnterNameRoute());
+                  context.router.push(const EnterNameRoute());
                 }),
             const SizedBox(height: 20),
             PrimaryButton(

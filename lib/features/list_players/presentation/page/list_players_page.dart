@@ -19,12 +19,15 @@ class ListPlayersPage extends StatelessWidget {
       color: AppColors.titleColor,
       fontFamily: "academy");
 
+  static const screenMargins = EdgeInsets.all(8.0);
+  static const double magnitudeSize = 25;
+
   @override
   Widget build(BuildContext context) {
     return BasePage(
         title: AppLocalizations.of(context)!.listPlayers,
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: screenMargins,
           child: BlocBuilder<GameBloc, GameState>(
             bloc: gameBloc,
             builder: (context, state) {
@@ -33,25 +36,20 @@ class ListPlayersPage extends StatelessWidget {
                     itemCount: state.game.players.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                state.game.players[index].name,
-                                style: textRendering,
-                              ),
-                            ],
-                          ),
-                          IconButton(
-                              iconSize: 25,
-                              icon: const Icon(
-                                Icons.more_horiz,
-                                color: AppColors.titleColor,
-                              ),
-                              onPressed: () {}),
-                        ],
+                      return InkWell(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              state.game.players[index].name,
+                              style: textRendering,
+                            ),
+                            const Icon(
+                              Icons.more_horiz,
+                              color: AppColors.titleColor,
+                            ),
+                          ],
+                        ),
                       );
                     });
               } else {
