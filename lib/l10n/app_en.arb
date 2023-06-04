@@ -52,7 +52,15 @@
 
   "listPlayers": "Список игроков",
   "addPlayer": "Добавить игрока",
-  "returnParameters": "Вернуться к параметрам игры"
+  "returnParameters": "Вернуться к параметрам игры",
+  "starImage": "assets/images/star.png",
+  "vectorImage": "assets/images/vector.png",
+
+  "indicatorLevel": "Уровень",
+  "indicatorBonuses": "Бонусы",
+  "indicatorStrength": "Сила",
+  "leftImage": "assets/images/left.png",
+  "rightImage": "assets/images/right.png"
 
 
 }
