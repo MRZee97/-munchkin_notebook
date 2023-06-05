@@ -65,7 +65,7 @@ class ListPlayersPage extends StatelessWidget {
             PrimaryButton(
                 text: AppLocalizations.of(context)!.addPlayer,
                 onPressed: () {
-                  AutoRouter.of(context).replaceAll([const EnterNameRoute()]);
+                  AutoRouter.of(context).push(const EnterNameRoute());
                 }),
             const SizedBox(height: 20),
             SecondaryButton(

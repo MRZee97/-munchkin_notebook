@@ -84,7 +84,7 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
                       gender: widget.selectedGenderUser,
                       color: _choseColor,
                       level: 1,
-                      bonuses: Random().nextInt(10) + 20)));
+                      bonuses: 0)));
                   context.router.push(const EmptyGameRoute());
                 }),
             const SizedBox(height: 20),

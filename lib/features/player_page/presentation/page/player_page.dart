@@ -4,21 +4,16 @@ import 'package:munchkin/core/ui/constants/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
-import 'package:munchkin/navigation/router.gr.dart';
+import 'package:munchkin/features/game/domain/entities/player.dart';
 
 @RoutePage()
 class PlayerPage extends StatefulWidget {
-  const PlayerPage(
-      {super.key,
-      required this.name,
-      required this.level,
-      required this.bonuses,
-      required this.force});
+  const PlayerPage({
+    super.key,
+    required this.player,
+  });
 
-  final String name;
-  final int level;
-  final int bonuses;
-  final int force;
+  final Player player;
 
   static const TextStyle textRendering = TextStyle(
       fontSize: 20,
@@ -46,7 +41,7 @@ class _PlayerPageState extends State<PlayerPage> {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-        title: widget.name,
+        title: widget.player.name,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -61,7 +56,7 @@ class _PlayerPageState extends State<PlayerPage> {
                 Image.asset(AppLocalizations.of(context)!.starImage,
                     height: 35),
                 const SizedBox(width: 10),
-                Text(widget.level.toString(), style: textRendering),
+                Text(widget.player.level.toString(), style: textRendering),
                 const SizedBox(width: 20),
                 Image.asset(AppLocalizations.of(context)!.rightImage,
                     width: 25),
@@ -75,10 +70,10 @@ class _PlayerPageState extends State<PlayerPage> {
               children: [
                 Image.asset(AppLocalizations.of(context)!.leftImage, width: 25),
                 const SizedBox(width: 20),
-                Image.asset(AppLocalizations.of(context)!.starImage,
+                Image.asset(AppLocalizations.of(context)!.vectorImage,
                     height: 35),
                 const SizedBox(width: 10),
-                Text(widget.bonuses.toString(), style: textRendering),
+                Text(widget.player.bonuses.toString(), style: textRendering),
                 const SizedBox(width: 20),
                 Image.asset(AppLocalizations.of(context)!.rightImage,
                     width: 25),
@@ -90,9 +85,11 @@ class _PlayerPageState extends State<PlayerPage> {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset("assets/images/union.png", height: 40),
+                Image.asset(AppLocalizations.of(context)!.unionImage,
+                    height: 35),
                 const SizedBox(width: 10),
-                Text(widget.force.toString(), style: textRendering),
+                Text((widget.player.level + widget.player.bonuses).toString(),
+                    style: textRendering),
               ],
             ),
           ],
