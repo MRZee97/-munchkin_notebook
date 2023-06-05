@@ -22,16 +22,17 @@ import 'package:munchkin/features/enter_code/presentation/page/enter_code_page.d
     as _i3;
 import 'package:munchkin/features/enter_name/presentation/page/enter_name_page.dart'
     as _i4;
-import 'package:munchkin/features/game/presentation/pages/game_page.dart'
-    as _i10;
+import 'package:munchkin/features/game/domain/entities/player.dart' as _i15;
 import 'package:munchkin/features/game_options/presentation/page/game_options_page.dart'
-    as _i11;
+    as _i10;
 import 'package:munchkin/features/join_game/presentation/page/join_game_page.dart'
     as _i5;
 import 'package:munchkin/features/list_players/presentation/page/list_players_page.dart'
-    as _i12;
+    as _i11;
 import 'package:munchkin/features/max_level/presentation/page/max_level_page.dart'
     as _i9;
+import 'package:munchkin/features/player_page/presentation/page/player_page.dart'
+    as _i12;
 import 'package:munchkin/features/self_counting/presentation/page/self%20_counting_page.dart'
     as _i6;
 
@@ -111,22 +112,26 @@ abstract class $AppRouter extends _i13.RootStackRouter {
         child: _i9.MaxLevelPage(key: args.key),
       );
     },
-    GameRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i10.GamePage(),
-      );
-    },
     GameOptionRoute.name: (routeData) {
       return _i13.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i11.GameOptionPage(),
+        child: const _i10.GameOptionPage(),
       );
     },
     ListPlayersRoute.name: (routeData) {
       return _i13.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i12.ListPlayersPage(),
+        child: const _i11.ListPlayersPage(),
+      );
+    },
+    PlayerRoute.name: (routeData) {
+      final args = routeData.argsAs<PlayerRouteArgs>();
+      return _i13.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i12.PlayerPage(
+          key: args.key,
+          player: args.player,
+        ),
       );
     },
   };
@@ -366,21 +371,7 @@ class MaxLevelRouteArgs {
 }
 
 /// generated route for
-/// [_i10.GamePage]
-class GameRoute extends _i13.PageRouteInfo<void> {
-  const GameRoute({List<_i13.PageRouteInfo>? children})
-      : super(
-          GameRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'GameRoute';
-
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i11.GameOptionPage]
+/// [_i10.GameOptionPage]
 class GameOptionRoute extends _i13.PageRouteInfo<void> {
   const GameOptionRoute({List<_i13.PageRouteInfo>? children})
       : super(
@@ -394,7 +385,7 @@ class GameOptionRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i12.ListPlayersPage]
+/// [_i11.ListPlayersPage]
 class ListPlayersRoute extends _i13.PageRouteInfo<void> {
   const ListPlayersRoute({List<_i13.PageRouteInfo>? children})
       : super(
@@ -405,4 +396,42 @@ class ListPlayersRoute extends _i13.PageRouteInfo<void> {
   static const String name = 'ListPlayersRoute';
 
   static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i12.PlayerPage]
+class PlayerRoute extends _i13.PageRouteInfo<PlayerRouteArgs> {
+  PlayerRoute({
+    _i14.Key? key,
+    required _i15.Player player,
+    List<_i13.PageRouteInfo>? children,
+  }) : super(
+          PlayerRoute.name,
+          args: PlayerRouteArgs(
+            key: key,
+            player: player,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'PlayerRoute';
+
+  static const _i13.PageInfo<PlayerRouteArgs> page =
+      _i13.PageInfo<PlayerRouteArgs>(name);
+}
+
+class PlayerRouteArgs {
+  const PlayerRouteArgs({
+    this.key,
+    required this.player,
+  });
+
+  final _i14.Key? key;
+
+  final _i15.Player player;
+
+  @override
+  String toString() {
+    return 'PlayerRouteArgs{key: $key, player: $player}';
+  }
 }

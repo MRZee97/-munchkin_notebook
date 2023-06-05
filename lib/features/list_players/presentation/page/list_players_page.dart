@@ -8,6 +8,7 @@ import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/features/game/presentation/bloc/game_bloc/game_bloc.dart';
 import 'package:munchkin/main.dart';
+import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
 class ListPlayersPage extends StatelessWidget {
@@ -63,7 +64,9 @@ class ListPlayersPage extends StatelessWidget {
           children: [
             PrimaryButton(
                 text: AppLocalizations.of(context)!.addPlayer,
-                onPressed: () {}),
+                onPressed: () {
+                  AutoRouter.of(context).push(const EnterNameRoute());
+                }),
             const SizedBox(height: 20),
             SecondaryButton(
                 text: AppLocalizations.of(context)!.returnParameters,

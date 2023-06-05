@@ -38,7 +38,7 @@
   "returnSexButton": "Вернуться к выбору пола",
 
 
-  "gameScrinEmpty": "Игра",
+  "gameScreen": "Игра",
   "textEmptyGame": "Шагать по просторам и заглядывать в пещеры вместе - веселее, чем одному. А ещё - значительно безопаснее. Добавь новых игроков в параметрах игры с помощью кнопки внизу экрана. Если у твоих друзей тоже установлено это приложение - они смогут самостоятельно присоединиться к тебе, введя код игры.",
   
   "gameParameters": "Параметры игры",
@@ -52,7 +52,16 @@
 
   "listPlayers": "Список игроков",
   "addPlayer": "Добавить игрока",
-  "returnParameters": "Вернуться к параметрам игры"
+  "returnParameters": "Вернуться к параметрам игры",
+  "starImage": "assets/images/star.png",
+  "vectorImage": "assets/images/vector.png",
+  "unionImage": "assets/images/union.png",
+
+  "indicatorLevel": "Уровень",
+  "indicatorBonuses": "Бонусы",
+  "indicatorStrength": "Сила",
+  "leftImage": "assets/images/left.png",
+  "rightImage": "assets/images/right.png"
 
 
 }

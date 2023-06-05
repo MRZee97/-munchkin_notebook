@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -80,7 +82,9 @@ class _ChoseColorPageState extends State<ChoseColorPage> {
                   gameBloc.add(AddPlayer(Player(
                       name: widget.selectedNameUser,
                       gender: widget.selectedGenderUser,
-                      color: _choseColor)));
+                      color: _choseColor,
+                      level: 1,
+                      bonuses: 0)));
                   context.router.push(const EmptyGameRoute());
                 }),
             const SizedBox(height: 20),

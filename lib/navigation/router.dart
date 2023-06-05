@@ -39,5 +39,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: ListPlayersRoute.page,
         ),
+        AutoRoute(page: PlayerRoute.page),
       ];
 }
