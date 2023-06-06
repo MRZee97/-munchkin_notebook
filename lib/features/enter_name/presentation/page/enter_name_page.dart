@@ -26,6 +26,15 @@ class _EnterNamePageState extends State<EnterNamePage> {
     super.dispose();
   }
 
+  static const TextStyle _textRendering = TextStyle(
+      fontSize: 36,
+      fontWeight: FontWeight.w700,
+      color: AppColors.titleColor,
+      fontFamily: "academy");
+  static const _screenMargins = EdgeInsets.symmetric(
+    horizontal: 40,
+  );
+
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -37,9 +46,7 @@ class _EnterNamePageState extends State<EnterNamePage> {
           ),
           const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 40,
-            ),
+            padding: _screenMargins,
             child: TextField(
               controller: _nameEditingController,
               textAlign: TextAlign.center,
@@ -50,11 +57,7 @@ class _EnterNamePageState extends State<EnterNamePage> {
                 );
                 name = _nameEditingController.text;
               },
-              style: const TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.titleColor,
-                  fontFamily: "academy"),
+              style: _textRendering,
               decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
                 enabledBorder: UnderlineInputBorder(

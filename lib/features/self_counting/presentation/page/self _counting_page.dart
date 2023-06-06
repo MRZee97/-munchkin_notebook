@@ -14,6 +14,14 @@ class SelfCoutingPage extends StatelessWidget {
   const SelfCoutingPage({super.key, required this.maxLevel});
 
   final int maxLevel;
+  static const double _containerWidth = 120;
+  static const double _containerHeight = 160;
+  static const _screenMargins = EdgeInsets.symmetric(horizontal: 10);
+  static const TextStyle _textRendering = TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: AppColors.titleColor,
+      fontFamily: "academy");
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +31,15 @@ class SelfCoutingPage extends StatelessWidget {
           const SizedBox(height: 20),
           Container(
             color: AppColors.shapeColor,
-            width: 120,
-            height: 160,
+            width: _containerWidth,
+            height: _containerHeight,
           ),
           const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: _screenMargins,
             child: Text(
               AppLocalizations.of(context)!.textSelfCounting,
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.titleColor,
-                  fontFamily: "academy"),
+              style: _textRendering,
             ),
           ),
         ]),

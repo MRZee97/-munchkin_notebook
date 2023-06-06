@@ -12,6 +12,13 @@ import 'package:munchkin/navigation/router.gr.dart';
 class CreateGamePage extends StatelessWidget {
   const CreateGamePage({super.key});
 
+  static const _screenMargins = EdgeInsets.symmetric(horizontal: 10);
+  static const TextStyle _textRendering = TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: AppColors.titleColor,
+      fontFamily: "academy");
+
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -23,14 +30,10 @@ class CreateGamePage extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: _screenMargins,
             child: Text(
               AppLocalizations.of(context)!.textCreateGame,
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.titleColor,
-                  fontFamily: "academy"),
+              style: _textRendering,
             ),
           ),
         ]),

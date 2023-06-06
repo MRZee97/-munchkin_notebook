@@ -13,6 +13,7 @@ class ColorSelection extends StatefulWidget {
   final List colors;
   final Function(Color) onTap;
   final Color choseColor;
+  static const containerWidth = 30.0;
 
   @override
   State<ColorSelection> createState() => _ColorSelectionState();
@@ -35,7 +36,7 @@ class _ColorSelectionState extends State<ColorSelection> {
               widget.onTap(widget.colors[index]);
             },
             child: Container(
-              width: 30.0,
+              width: ColorSelection.containerWidth,
               decoration: BoxDecoration(
                 color: widget.colors[index],
                 shape: BoxShape.circle,

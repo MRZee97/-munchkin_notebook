@@ -15,6 +15,12 @@ class MaxLevelPage extends StatelessWidget {
 
   final MaxLevelController _maxLevelController =
       MaxLevelController(initialvalue: 7);
+  static const TextStyle _textRendering = TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: AppColors.titleColor,
+      fontFamily: "academy");
+  static const _screenMargins = EdgeInsets.symmetric(horizontal: 10);
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +33,10 @@ class MaxLevelPage extends StatelessWidget {
               controller: _maxLevelController,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: _screenMargins,
               child: Text(
                 AppLocalizations.of(context)!.textMaxLevel,
-                style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.titleColor,
-                    fontFamily: "academy"),
+                style: _textRendering,
               ),
             ),
           ]),

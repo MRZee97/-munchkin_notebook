@@ -11,6 +11,15 @@ import 'package:munchkin/navigation/router.gr.dart';
 class JoinGamePage extends StatelessWidget {
   const JoinGamePage({super.key});
 
+  static const TextStyle _textRendering = TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: AppColors.titleColor,
+      fontFamily: "academy");
+  static const _screenMargins = EdgeInsets.symmetric(horizontal: 10);
+  static const double _containerWidth = 120;
+  static const double _containerHeight = 160;
+
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -19,19 +28,15 @@ class JoinGamePage extends StatelessWidget {
           const SizedBox(height: 20),
           Container(
             color: AppColors.shapeColor,
-            width: 120,
-            height: 160,
+            width: _containerWidth,
+            height: _containerHeight,
           ),
           const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: _screenMargins,
             child: Text(
               AppLocalizations.of(context)!.textJoinGame,
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.titleColor,
-                  fontFamily: "academy"),
+              style: _textRendering,
             ),
           ),
         ]),

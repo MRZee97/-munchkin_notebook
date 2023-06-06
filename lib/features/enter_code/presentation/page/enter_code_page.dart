@@ -35,6 +35,12 @@ class _EnterCodePageState extends State<EnterCodePage> {
   List pincodes = [];
   int numberCells = 4;
   String _pincode = "";
+  static const TextStyle _textRenderingEnterCode = TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: AppColors.titleColor,
+      fontFamily: "academy");
+  static const _screenMargins = EdgeInsets.all(10.0);
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +51,10 @@ class _EnterCodePageState extends State<EnterCodePage> {
           RenderingPin(numberCells: numberCells, pincodes: pincodes),
           const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: _screenMargins,
             child: Text(
               AppLocalizations.of(context)!.textEnterCode,
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.titleColor,
-                  fontFamily: "academy"),
+              style: _textRenderingEnterCode,
             ),
           ),
         ]),
@@ -65,7 +67,6 @@ class _EnterCodePageState extends State<EnterCodePage> {
                   for (TextEditingController pincode in pincodes) {
                     _pincode += pincode.text;
                   }
-                  print(_pincode);
                 }),
             const SizedBox(height: 20),
             SecondaryButton(
