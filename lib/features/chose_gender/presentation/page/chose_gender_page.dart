@@ -16,6 +16,8 @@ class ChoseGenderPage extends StatefulWidget {
   const ChoseGenderPage({super.key, required this.selectedNameUser});
 
   final String selectedNameUser;
+  static const double _containerWidth = 120;
+  static const double _containerHeight = 160;
 
   @override
   State<ChoseGenderPage> createState() => _ChoseGenderPageState();
@@ -31,8 +33,8 @@ class _ChoseGenderPageState extends State<ChoseGenderPage> {
           const SizedBox(height: 20),
           Container(
             color: AppColors.shapeColor,
-            width: 120,
-            height: 160,
+            width: ChoseGenderPage._containerWidth,
+            height: ChoseGenderPage._containerHeight,
           ),
           const SizedBox(height: 20),
           GenderSelection(

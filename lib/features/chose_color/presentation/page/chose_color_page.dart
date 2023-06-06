@@ -18,7 +18,7 @@ import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
 class ChoseColorPage extends StatefulWidget {
-  ChoseColorPage(
+  const ChoseColorPage(
       {super.key,
       required this.selectedNameUser,
       required this.selectedGenderUser});

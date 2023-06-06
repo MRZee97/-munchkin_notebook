@@ -8,6 +8,11 @@ class LvlSelectionGroup extends StatefulWidget {
   });
 
   final MaxLevelController controller;
+  static const TextStyle _textRendering = TextStyle(
+      fontSize: 48,
+      fontWeight: FontWeight.w700,
+      color: AppColors.titleColor,
+      fontFamily: "academy");
 
   @override
   State<LvlSelectionGroup> createState() => _LvlSelectionGroupState();
@@ -43,12 +48,7 @@ class _LvlSelectionGroupState extends State<LvlSelectionGroup> {
                 widget.controller.decrementLevel();
               }),
         ),
-        Text(_currentLevel.toString(),
-            style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.w700,
-                color: AppColors.titleColor,
-                fontFamily: "academy")),
+        Text(_currentLevel.toString(), style: LvlSelectionGroup._textRendering),
         IconButton(
             iconSize: 70,
             icon: const Icon(

@@ -12,10 +12,17 @@ import 'package:munchkin/navigation/router.gr.dart';
 class EmptyGamePage extends StatelessWidget {
   const EmptyGamePage({super.key});
 
-  static const screenMargins = EdgeInsets.all(8.0);
-  static const TextStyle textRendering = TextStyle(
+  static const _screenMargins = EdgeInsets.all(10.0);
+  static const TextStyle _textRenderingMultiplePlayers = TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w700,
+      color: AppColors.titleColor,
+      fontFamily: "academy");
+  static const double _containerWidth = 120;
+  static const double _containerHeight = 160;
+  static const TextStyle _textRenderingEmptyGame = TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
       color: AppColors.titleColor,
       fontFamily: "academy");
 
@@ -32,19 +39,15 @@ class EmptyGamePage extends StatelessWidget {
                       const SizedBox(height: 20),
                       Container(
                         color: AppColors.shapeColor,
-                        width: 120,
-                        height: 160,
+                        width: _containerWidth,
+                        height: _containerHeight,
                       ),
                       const SizedBox(height: 20),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: _screenMargins,
                         child: Text(
                           AppLocalizations.of(context)!.textEmptyGame,
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.titleColor,
-                              fontFamily: "academy"),
+                          style: _textRenderingEmptyGame,
                         ),
                       ),
                     ])
@@ -63,7 +66,7 @@ class EmptyGamePage extends StatelessWidget {
                                 children: [
                                   Text(
                                     state.game.players[index].name,
-                                    style: textRendering,
+                                    style: _textRenderingMultiplePlayers,
                                   ),
                                 ],
                               ),
@@ -76,23 +79,23 @@ class EmptyGamePage extends StatelessWidget {
                                     height: 20),
                                 Text(
                                   state.game.players[index].level.toString(),
-                                  style: textRendering,
+                                  style: _textRenderingMultiplePlayers,
                                 ),
                                 Image.asset(
                                     AppLocalizations.of(context)!.vectorImage,
                                     height: 20),
                                 Text(
                                   state.game.players[index].bonuses.toString(),
-                                  style: textRendering,
+                                  style: _textRenderingMultiplePlayers,
                                 ),
                                 Image.asset(
                                     AppLocalizations.of(context)!.unionImage,
                                     height: 20),
                                 Text(
                                   bonusPoints.toString(),
-                                  style: textRendering,
+                                  style: _textRenderingMultiplePlayers,
                                 ),
-                                SizedBox(width: 119),
+                                const SizedBox(width: 119),
                                 const Icon(
                                   Icons.more_horiz,
                                   color: AppColors.titleColor,
@@ -112,7 +115,7 @@ class EmptyGamePage extends StatelessWidget {
                         color: AppColors.titleColor,
                       ),
                       onPressed: () {
-                        context.router.push(GameOptionRoute());
+                        context.router.push(const GameOptionRoute());
                       }),
                   const SizedBox(height: 20),
                 ],

@@ -16,17 +16,6 @@ class PlayerPage extends StatefulWidget {
   final Player player;
 
   static const TextStyle textRendering = TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w700,
-      color: AppColors.titleColor,
-      fontFamily: "academy");
-
-  @override
-  State<PlayerPage> createState() => _PlayerPageState();
-}
-
-class _PlayerPageState extends State<PlayerPage> {
-  static const TextStyle textRendering = TextStyle(
       fontSize: 48,
       fontWeight: FontWeight.w700,
       color: AppColors.titleColor,
@@ -39,6 +28,11 @@ class _PlayerPageState extends State<PlayerPage> {
       fontFamily: "academy");
 
   @override
+  State<PlayerPage> createState() => _PlayerPageState();
+}
+
+class _PlayerPageState extends State<PlayerPage> {
+  @override
   Widget build(BuildContext context) {
     return BasePage(
         title: widget.player.name,
@@ -47,7 +41,7 @@ class _PlayerPageState extends State<PlayerPage> {
           children: [
             const SizedBox(height: 20),
             Text(AppLocalizations.of(context)!.indicatorLevel,
-                style: textParameters),
+                style: PlayerPage.textParameters),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -56,7 +50,8 @@ class _PlayerPageState extends State<PlayerPage> {
                 Image.asset(AppLocalizations.of(context)!.starImage,
                     height: 35),
                 const SizedBox(width: 10),
-                Text(widget.player.level.toString(), style: textRendering),
+                Text(widget.player.level.toString(),
+                    style: PlayerPage.textRendering),
                 const SizedBox(width: 20),
                 Image.asset(AppLocalizations.of(context)!.rightImage,
                     width: 25),
@@ -64,7 +59,7 @@ class _PlayerPageState extends State<PlayerPage> {
             ),
             const SizedBox(height: 40),
             Text(AppLocalizations.of(context)!.indicatorBonuses,
-                style: textParameters),
+                style: PlayerPage.textParameters),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -73,7 +68,8 @@ class _PlayerPageState extends State<PlayerPage> {
                 Image.asset(AppLocalizations.of(context)!.vectorImage,
                     height: 35),
                 const SizedBox(width: 10),
-                Text(widget.player.bonuses.toString(), style: textRendering),
+                Text(widget.player.bonuses.toString(),
+                    style: PlayerPage.textRendering),
                 const SizedBox(width: 20),
                 Image.asset(AppLocalizations.of(context)!.rightImage,
                     width: 25),
@@ -81,7 +77,7 @@ class _PlayerPageState extends State<PlayerPage> {
             ),
             const SizedBox(height: 30),
             Text(AppLocalizations.of(context)!.indicatorStrength,
-                style: textParameters),
+                style: PlayerPage.textParameters),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -89,7 +85,7 @@ class _PlayerPageState extends State<PlayerPage> {
                     height: 35),
                 const SizedBox(width: 10),
                 Text((widget.player.level + widget.player.bonuses).toString(),
-                    style: textRendering),
+                    style: PlayerPage.textRendering),
               ],
             ),
           ],

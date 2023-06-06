@@ -8,6 +8,7 @@ class Otp extends StatelessWidget {
   }) : super(key: key);
 
   TextEditingController controller;
+  static const double _fatBorder = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class Otp extends StatelessWidget {
         decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              width: 4,
+              width: _fatBorder,
               color: Colors.black,
             ),
           ),
