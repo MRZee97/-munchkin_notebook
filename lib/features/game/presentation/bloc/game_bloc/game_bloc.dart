@@ -7,27 +7,27 @@ part 'game_event.dart';
 part 'game_state.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
-  Game? game;
+  Game? _game;
 
   GameBloc() : super(GameNotReady()) {
     on<GameEvent>((event, emit) {
       if (event is CreateGame) {
-        game = Game(
+        _game = Game(
             maxLevel: event.maxLevel,
             isAnarchy: event.isAnarchy,
             players: event.players);
-        emit(GameCreated(game!));
+        emit(GameCreated(_game!));
       }
       if (event is ChangeGameMaxLevel) {
-        if (game != null) {
-          game?.maxLevel = event.maxLevel;
-          emit(GameCreated(game!));
+        if (_game != null) {
+          _game?.maxLevel = event.maxLevel;
+          emit(GameCreated(_game!));
         }
       }
       if (event is AddPlayer) {
-        if (game != null) {
-          game?.players.add(event.player);
-          emit(GameCreated(game!));
+        if (_game != null) {
+          _game?.players.add(event.player);
+          emit(GameCreated(_game!));
         }
       }
     });
