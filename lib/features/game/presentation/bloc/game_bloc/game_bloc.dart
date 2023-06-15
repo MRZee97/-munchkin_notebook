@@ -8,10 +8,12 @@ part 'game_state.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
   Game? _game;
+  List<Player> _players = [];
 
   GameBloc() : super(GameNotReady()) {
     on<GameEvent>((event, emit) {
       if (event is CreateGame) {
+        _players = event.players;
         _game = Game(
             maxLevel: event.maxLevel,
             isAnarchy: event.isAnarchy,
@@ -20,13 +22,14 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       }
       if (event is ChangeGameMaxLevel) {
         if (_game != null) {
-          _game?.maxLevel = event.maxLevel;
+          _game = _game!.copyWith(maxLevel: event.maxLevel);
           emit(GameCreated(_game!));
         }
       }
       if (event is AddPlayer) {
         if (_game != null) {
-          _game?.players.add(event.player);
+          _players.add(event.player);
+          _game = _game!.copyWith(players: _players);
           emit(GameCreated(_game!));
         }
       }
