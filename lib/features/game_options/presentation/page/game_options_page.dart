@@ -51,7 +51,7 @@ class GameOptionPage extends StatelessWidget {
                     const SizedBox(height: 20),
                     InkWell(
                       onTap: () =>
-                          context.router.push(const ListPlayersRoute()),
+                          context.router.push(const MultiplayerRoute()),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class Otp extends StatelessWidget {
-  Otp({
+class PinCodeField extends StatelessWidget {
+  const PinCodeField({
     Key? key,
     required this.controller,
   }) : super(key: key);
 
-  TextEditingController controller;
+  final TextEditingController controller;
   static const double _fatBorder = 4;
 
   @override
