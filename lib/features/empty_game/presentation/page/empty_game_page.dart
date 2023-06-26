@@ -8,18 +8,20 @@ import 'package:munchkin/features/game/presentation/bloc/game_bloc/game_bloc.dar
 import 'package:munchkin/main.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
+import '../widgets/player_characteristics.dart';
+
 @RoutePage()
 class EmptyGamePage extends StatelessWidget {
   const EmptyGamePage({super.key});
 
   static const _screenMargins = EdgeInsets.all(10.0);
+  static const double _containerWidth = 120;
+  static const double _containerHeight = 160;
   static const TextStyle _textRenderingMultiplePlayers = TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w700,
       color: AppColors.titleColor,
       fontFamily: "academy");
-  static const double _containerWidth = 120;
-  static const double _containerHeight = 160;
   static const TextStyle _textRenderingEmptyGame = TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w400,
@@ -57,53 +59,11 @@ class EmptyGamePage extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final bonusPoints = state.game.players[index].bonuses +
                             state.game.players[index].level;
-                        return Column(
-                          children: [
-                            InkWell(
-                              onTap: () => context.router.push(PlayerRoute(
-                                  player: state.game.players[index])),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    state.game.players[index].name,
-                                    style: _textRenderingMultiplePlayers,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Image.asset(
-                                    AppLocalizations.of(context)!.starImage,
-                                    height: 20),
-                                Text(
-                                  state.game.players[index].level.toString(),
-                                  style: _textRenderingMultiplePlayers,
-                                ),
-                                Image.asset(
-                                    AppLocalizations.of(context)!.vectorImage,
-                                    height: 20),
-                                Text(
-                                  state.game.players[index].bonuses.toString(),
-                                  style: _textRenderingMultiplePlayers,
-                                ),
-                                Image.asset(
-                                    AppLocalizations.of(context)!.unionImage,
-                                    height: 20),
-                                Text(
-                                  bonusPoints.toString(),
-                                  style: _textRenderingMultiplePlayers,
-                                ),
-                                const SizedBox(width: 119),
-                                const Icon(
-                                  Icons.more_horiz,
-                                  color: AppColors.titleColor,
-                                ),
-                              ],
-                            ),
-                          ],
-                        );
+                        return PlayerCharacteristics(
+                            textRenderingMultiplePlayers:
+                                _textRenderingMultiplePlayers,
+                            bonusPoints: bonusPoints,
+                            player: state.game.players[index]);
                       }),
               actions: Column(
                 mainAxisAlignment: MainAxisAlignment.end,

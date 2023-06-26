@@ -10,7 +10,7 @@ import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
 class EnterCodePage extends StatefulWidget {
-  EnterCodePage({super.key});
+  const EnterCodePage({super.key});
 
   @override
   State<EnterCodePage> createState() => _EnterCodePageState();
@@ -35,12 +35,12 @@ class _EnterCodePageState extends State<EnterCodePage> {
   List pincodes = [];
   int numberCells = 4;
   String _pincode = "";
+  static const _screenMargins = EdgeInsets.all(10.0);
   static const TextStyle _textRenderingEnterCode = TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w400,
       color: AppColors.titleColor,
       fontFamily: "academy");
-  static const _screenMargins = EdgeInsets.all(10.0);
 
   @override
   Widget build(BuildContext context) {

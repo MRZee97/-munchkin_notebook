@@ -7,8 +7,8 @@ import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/features/game/domain/entities/player.dart';
 
 @RoutePage()
-class PlayerPage extends StatefulWidget {
-  const PlayerPage({
+class SinglePlayerPage extends StatefulWidget {
+  const SinglePlayerPage({
     super.key,
     required this.player,
   });
@@ -28,10 +28,10 @@ class PlayerPage extends StatefulWidget {
       fontFamily: "academy");
 
   @override
-  State<PlayerPage> createState() => _PlayerPageState();
+  State<SinglePlayerPage> createState() => _SinglePlayerPageState();
 }
 
-class _PlayerPageState extends State<PlayerPage> {
+class _SinglePlayerPageState extends State<SinglePlayerPage> {
   @override
   Widget build(BuildContext context) {
     return BasePage(
@@ -41,7 +41,7 @@ class _PlayerPageState extends State<PlayerPage> {
           children: [
             const SizedBox(height: 20),
             Text(AppLocalizations.of(context)!.indicatorLevel,
-                style: PlayerPage.textParameters),
+                style: SinglePlayerPage.textParameters),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -51,7 +51,7 @@ class _PlayerPageState extends State<PlayerPage> {
                     height: 35),
                 const SizedBox(width: 10),
                 Text(widget.player.level.toString(),
-                    style: PlayerPage.textRendering),
+                    style: SinglePlayerPage.textRendering),
                 const SizedBox(width: 20),
                 Image.asset(AppLocalizations.of(context)!.rightImage,
                     width: 25),
@@ -59,7 +59,7 @@ class _PlayerPageState extends State<PlayerPage> {
             ),
             const SizedBox(height: 40),
             Text(AppLocalizations.of(context)!.indicatorBonuses,
-                style: PlayerPage.textParameters),
+                style: SinglePlayerPage.textParameters),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -69,7 +69,7 @@ class _PlayerPageState extends State<PlayerPage> {
                     height: 35),
                 const SizedBox(width: 10),
                 Text(widget.player.bonuses.toString(),
-                    style: PlayerPage.textRendering),
+                    style: SinglePlayerPage.textRendering),
                 const SizedBox(width: 20),
                 Image.asset(AppLocalizations.of(context)!.rightImage,
                     width: 25),
@@ -77,7 +77,7 @@ class _PlayerPageState extends State<PlayerPage> {
             ),
             const SizedBox(height: 30),
             Text(AppLocalizations.of(context)!.indicatorStrength,
-                style: PlayerPage.textParameters),
+                style: SinglePlayerPage.textParameters),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -85,7 +85,7 @@ class _PlayerPageState extends State<PlayerPage> {
                     height: 35),
                 const SizedBox(width: 10),
                 Text((widget.player.level + widget.player.bonuses).toString(),
-                    style: PlayerPage.textRendering),
+                    style: SinglePlayerPage.textRendering),
               ],
             ),
           ],

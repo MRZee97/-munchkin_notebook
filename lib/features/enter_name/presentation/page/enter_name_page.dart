@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:munchkin/core/ui/constants/app_colors.dart';
-import 'package:munchkin/core/ui/widgets/image_widget.dart';
+import 'package:munchkin/core/ui/widgets/image_size.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:munchkin/core/ui/widgets/primary_button.dart';
 import 'package:munchkin/core/ui/widgets/secondary_button.dart';
@@ -41,7 +41,7 @@ class _EnterNamePageState extends State<EnterNamePage> {
         title: AppLocalizations.of(context)!.enterName,
         body: Column(children: [
           const SizedBox(height: 20),
-          ImageWidget(
+          ImageSize(
             image: AppLocalizations.of(context)!.manchkinImage,
           ),
           const SizedBox(height: 20),

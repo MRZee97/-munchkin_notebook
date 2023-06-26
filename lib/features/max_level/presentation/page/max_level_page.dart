@@ -7,7 +7,7 @@ import 'package:munchkin/core/ui/widgets/secondary_button.dart';
 import 'package:munchkin/features/base_page/presentation/base_page.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
-import 'level_selection.dart';
+import '../controllers/level_selection.dart';
 
 @RoutePage()
 class MaxLevelPage extends StatelessWidget {

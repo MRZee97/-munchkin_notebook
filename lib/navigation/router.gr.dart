@@ -27,14 +27,14 @@ import 'package:munchkin/features/game_options/presentation/page/game_options_pa
     as _i10;
 import 'package:munchkin/features/join_game/presentation/page/join_game_page.dart'
     as _i5;
-import 'package:munchkin/features/list_players/presentation/page/list_players_page.dart'
-    as _i11;
 import 'package:munchkin/features/max_level/presentation/page/max_level_page.dart'
     as _i9;
-import 'package:munchkin/features/player_page/presentation/page/player_page.dart'
-    as _i12;
+import 'package:munchkin/features/multiplayer/presentation/page/multiplayer_page.dart'
+    as _i11;
 import 'package:munchkin/features/self_counting/presentation/page/self%20_counting_page.dart'
     as _i6;
+import 'package:munchkin/features/singleplayer/presentation/page/singleplayer_page.dart'
+    as _i12;
 
 abstract class $AppRouter extends _i13.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -58,11 +58,9 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     EnterCodeRoute.name: (routeData) {
-      final args = routeData.argsAs<EnterCodeRouteArgs>(
-          orElse: () => const EnterCodeRouteArgs());
       return _i13.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.EnterCodePage(key: args.key),
+        child: const _i3.EnterCodePage(),
       );
     },
     EnterNameRoute.name: (routeData) {
@@ -118,17 +116,17 @@ abstract class $AppRouter extends _i13.RootStackRouter {
         child: const _i10.GameOptionPage(),
       );
     },
-    ListPlayersRoute.name: (routeData) {
+    MultiplayerRoute.name: (routeData) {
       return _i13.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i11.ListPlayersPage(),
+        child: const _i11.MultiplayerPage(),
       );
     },
-    PlayerRoute.name: (routeData) {
-      final args = routeData.argsAs<PlayerRouteArgs>();
+    SinglePlayerRoute.name: (routeData) {
+      final args = routeData.argsAs<SinglePlayerRouteArgs>();
       return _i13.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i12.PlayerPage(
+        child: _i12.SinglePlayerPage(
           key: args.key,
           player: args.player,
         ),
@@ -191,31 +189,16 @@ class CreateGameRoute extends _i13.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.EnterCodePage]
-class EnterCodeRoute extends _i13.PageRouteInfo<EnterCodeRouteArgs> {
-  EnterCodeRoute({
-    _i14.Key? key,
-    List<_i13.PageRouteInfo>? children,
-  }) : super(
+class EnterCodeRoute extends _i13.PageRouteInfo<void> {
+  const EnterCodeRoute({List<_i13.PageRouteInfo>? children})
+      : super(
           EnterCodeRoute.name,
-          args: EnterCodeRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'EnterCodeRoute';
 
-  static const _i13.PageInfo<EnterCodeRouteArgs> page =
-      _i13.PageInfo<EnterCodeRouteArgs>(name);
-}
-
-class EnterCodeRouteArgs {
-  const EnterCodeRouteArgs({this.key});
-
-  final _i14.Key? key;
-
-  @override
-  String toString() {
-    return 'EnterCodeRouteArgs{key: $key}';
-  }
+  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
 }
 
 /// generated route for
@@ -385,43 +368,43 @@ class GameOptionRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i11.ListPlayersPage]
-class ListPlayersRoute extends _i13.PageRouteInfo<void> {
-  const ListPlayersRoute({List<_i13.PageRouteInfo>? children})
+/// [_i11.MultiplayerPage]
+class MultiplayerRoute extends _i13.PageRouteInfo<void> {
+  const MultiplayerRoute({List<_i13.PageRouteInfo>? children})
       : super(
-          ListPlayersRoute.name,
+          MultiplayerRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'ListPlayersRoute';
+  static const String name = 'MultiplayerRoute';
 
   static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i12.PlayerPage]
-class PlayerRoute extends _i13.PageRouteInfo<PlayerRouteArgs> {
-  PlayerRoute({
+/// [_i12.SinglePlayerPage]
+class SinglePlayerRoute extends _i13.PageRouteInfo<SinglePlayerRouteArgs> {
+  SinglePlayerRoute({
     _i14.Key? key,
     required _i15.Player player,
     List<_i13.PageRouteInfo>? children,
   }) : super(
-          PlayerRoute.name,
-          args: PlayerRouteArgs(
+          SinglePlayerRoute.name,
+          args: SinglePlayerRouteArgs(
             key: key,
             player: player,
           ),
           initialChildren: children,
         );
 
-  static const String name = 'PlayerRoute';
+  static const String name = 'SinglePlayerRoute';
 
-  static const _i13.PageInfo<PlayerRouteArgs> page =
-      _i13.PageInfo<PlayerRouteArgs>(name);
+  static const _i13.PageInfo<SinglePlayerRouteArgs> page =
+      _i13.PageInfo<SinglePlayerRouteArgs>(name);
 }
 
-class PlayerRouteArgs {
-  const PlayerRouteArgs({
+class SinglePlayerRouteArgs {
+  const SinglePlayerRouteArgs({
     this.key,
     required this.player,
   });
@@ -432,6 +415,6 @@ class PlayerRouteArgs {
 
   @override
   String toString() {
-    return 'PlayerRouteArgs{key: $key, player: $player}';
+    return 'SinglePlayerRouteArgs{key: $key, player: $player}';
   }
 }

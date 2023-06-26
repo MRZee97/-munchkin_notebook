@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ImageWidget extends StatelessWidget {
-  const ImageWidget({required this.image, super.key});
+class ImageSize extends StatelessWidget {
+  const ImageSize({required this.image, super.key});
   final String image;
 
   @override

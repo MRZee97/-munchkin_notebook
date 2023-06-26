@@ -1,10 +1,10 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:munchkin/core/ui/widgets/image_widget.dart';
+import 'package:munchkin/core/ui/widgets/image_size.dart';
 import 'package:munchkin/features/chose_gender/presentation/page/chose_gender_page.dart';
 
 class GenderSelection extends StatefulWidget {
-  GenderSelection({
+  const GenderSelection({
     super.key,
     required this.choseGender,
     required this.onTap,
@@ -39,7 +39,7 @@ class _GenderSelectionState extends State<GenderSelection> {
             child: SizedBox(
                 height: GenderSelection.height,
                 width: GenderSelection.width,
-                child: ImageWidget(
+                child: ImageSize(
                   image: AppLocalizations.of(context)!.manImage,
                 )),
           ),
@@ -59,7 +59,7 @@ class _GenderSelectionState extends State<GenderSelection> {
             child: SizedBox(
               height: GenderSelection.height,
               width: GenderSelection.width,
-              child: ImageWidget(
+              child: ImageSize(
                 image: AppLocalizations.of(context)!.womanImage,
               ),
             ),

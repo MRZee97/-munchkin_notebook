@@ -11,8 +11,8 @@ import 'package:munchkin/main.dart';
 import 'package:munchkin/navigation/router.gr.dart';
 
 @RoutePage()
-class ListPlayersPage extends StatelessWidget {
-  const ListPlayersPage({super.key});
+class MultiplayerPage extends StatelessWidget {
+  const MultiplayerPage({super.key});
 
   static const TextStyle textRendering = TextStyle(
       fontSize: 20,
